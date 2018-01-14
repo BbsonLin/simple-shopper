@@ -1,0 +1,4 @@
+# Python web back-end development packages
+Flask >= 0.12
+
+gunicorn >= 19.7.1
