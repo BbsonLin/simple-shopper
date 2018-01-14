@@ -3,6 +3,7 @@
     <shopper-header></shopper-header>
     <shopper-jumbotron></shopper-jumbotron>
     <shopper-product></shopper-product>
+    <shopper-footer></shopper-footer>
     <!-- <router-view/> -->
   </div>
 </template>
@@ -11,13 +12,15 @@
 import ShopperHeader from './components/Header'
 import ShopperJumbotron from './components/Jumbotron'
 import ShopperProduct from './components/Product'
+import ShopperFooter from './components/Footer'
 
 export default {
   name: 'app',
   components: {
     ShopperHeader,
     ShopperJumbotron,
-    ShopperProduct
+    ShopperProduct,
+    ShopperFooter
   }
 }
 </script>
