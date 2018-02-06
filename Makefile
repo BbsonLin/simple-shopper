@@ -5,4 +5,7 @@ app:
 	mkdir public && mkdir public/templates/
 	cp -rf frontend/dist/static/ public/
 	cp -rf frontend/dist/index.html public/templates/
-	cp -rf app.py public/ && python public/app.py
+	cp -rf app.py public/ && cd public/ && python app.py
+
+f-up:
+	cd frontend && yarn build

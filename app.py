@@ -1,7 +1,19 @@
+import os
+
 from flask import Flask, jsonify, request, render_template
 
 
-app = Flask(__name__)
+extra_dirs = ['../frontend/dist/', '../frontend/dist/static/']
+extra_files = extra_dirs[:]
+for extra_dir in extra_dirs:
+    for dirname, dirs, files in os.walk(extra_dir):
+        for filename in files:
+            filename = os.path.join(dirname, filename)
+            if os.path.isfile(filename):
+                extra_files.append(filename)
+
+app = Flask(__name__, static_folder='../frontend/dist/static',
+            template_folder='../frontend/dist')
 
 
 products = {
@@ -31,4 +43,4 @@ def product():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', use_reloader=True, use_debugger=True, extra_files=extra_files)
