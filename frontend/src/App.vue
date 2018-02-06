@@ -11,7 +11,7 @@
 <script>
 import ShopperHeader from './components/Header'
 import ShopperJumbotron from './components/Jumbotron'
-import ShopperProduct from './components/Product'
+import ShopperProduct from './components/Product/Product'
 import ShopperFooter from './components/Footer'
 
 export default {
