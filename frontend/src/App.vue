@@ -2,24 +2,21 @@
   <div id="app">
     <shopper-header></shopper-header>
     <shopper-jumbotron></shopper-jumbotron>
-    <shopper-product></shopper-product>
+    <router-view/>
     <shopper-footer></shopper-footer>
-    <!-- <router-view/> -->
   </div>
 </template>
 
 <script>
-import ShopperHeader from './components/Header'
-import ShopperJumbotron from './components/Jumbotron'
-import ShopperProduct from './components/Product/Product'
-import ShopperFooter from './components/Footer'
 
+import ShopperHeader from './Components/Header'
+import ShopperJumbotron from './Components/Jumbotron'
+import ShopperFooter from './Components/Footer'
 export default {
   name: 'app',
   components: {
     ShopperHeader,
     ShopperJumbotron,
-    ShopperProduct,
     ShopperFooter
   }
 }
