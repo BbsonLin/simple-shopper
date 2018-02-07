@@ -20,7 +20,7 @@ export default {
   background-image: url('https://images.unsplash.com/photo-1483274816418-3975509c8f78');
   background-size: cover;
   background-position: center center;
-  min-height: 20rem;
+  min-height: 10rem;
 }
 
 .bg-lighter {

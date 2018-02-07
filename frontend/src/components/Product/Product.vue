@@ -11,9 +11,11 @@
       </div>
       <div class="col-md-9">
         <div class="row">
-          <product-card v-for="product in products"
-                        :product="product"
-                        :key="product.id"></product-card>
+          <product-card
+            v-for="product in products"
+            :product="product"
+            :key="product.id">
+          </product-card>
         </div>
       </div>
     </div>
