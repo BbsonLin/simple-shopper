@@ -1,10 +1,14 @@
 const state = {
-  products: []
+  products: [],
+  totalNumber: 0
 }
 
 const getters = {
-  getProducts: (state) => {
+  getCartProducts: (state) => {
     return state.products
+  },
+  getTotalNumber: (state) => {
+    return state.totalNumber
   }
 }
 
@@ -16,7 +20,18 @@ const actions = {
 
 const mutations = {
   UPDATE_CART (state, data) {
-    state.products.push(data)
+    console.log(data)
+    if (state.products.length) {
+      let product = state.products.find(item => item.id === data.id)
+      if (product) {
+        product.number += data.number
+      } else {
+        state.products.push(data)
+      }
+    } else {
+      state.products.push(data)
+    }
+    state.totalNumber += data.number
   }
 }
 
