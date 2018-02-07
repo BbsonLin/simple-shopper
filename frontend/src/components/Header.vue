@@ -1,12 +1,11 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">SimpleShopper</a>
-
     <div class="dropdown ml-auto" ref="dropdown">
       <button class="btn btn-sm btn-cart" @click="toggleMenu()">
         <span class="h6">購物車</span>
         <i class="fa fa-shopping-cart fa-2x"></i>
-        <span class="badge badge-pill badge-danger">{{ items.length }}</span>
+        <span class="badge badge-pill badge-danger">{{ totalNumber }}</span>
       </button>
       <div class="shopper-menu" :class="{ 'open': menuOpen }">
         <h6>已選擇商品</h6>
@@ -26,15 +25,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      menuOpen: false,
-      items: [
-        {'id': 1, 'name': '商品一', 'number': 2, 'price': 480},
-        {'id': 2, 'name': '商品二', 'number': 3, 'price': 600}
-      ]
+      menuOpen: false
+      // items: [
+      //   {'id': 1, 'name': '商品一', 'number': 2, 'price': 480},
+      //   {'id': 2, 'name': '商品二', 'number': 3, 'price': 600}
+      // ]
     }
+  },
+  computed: {
+    ...mapGetters({
+      items: 'getCartProducts',
+      totalNumber: 'getTotalNumber'
+    })
   },
   methods: {
     toggleMenu () {
