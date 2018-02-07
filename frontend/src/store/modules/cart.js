@@ -20,7 +20,6 @@ const actions = {
 
 const mutations = {
   UPDATE_CART (state, data) {
-    console.log(data)
     if (state.products.length) {
       let product = state.products.find(item => item.id === data.id)
       if (product) {
