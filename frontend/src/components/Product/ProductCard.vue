@@ -16,13 +16,14 @@
         </div>
       </div>
       <div class="card-footer border-0 text-center bg-white">
-        <button class="btn btn-primary">加進購物車</button>
+        <button class="btn btn-primary" @click="addToCart">加進購物車</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   props: {
     product: {
@@ -35,6 +36,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['updateCart']),
     decrease () {
       if (this.number > 0) {
         this.number -= 1
@@ -44,6 +46,11 @@ export default {
       if (this.number < 100) {
         this.number += 1
       }
+    },
+    addToCart () {
+      let product = JSON.parse(JSON.stringify(this.product))
+      product.number = this.number
+      this.updateCart(product)
     }
   }
 }
