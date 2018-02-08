@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-secondary py-4 text-light">
+  <footer class="bg-secondary text-light">
     <div class="container d-flex justify-content-between">
       <div>© Copyright AIWill Lab.</div>
       <div>
@@ -20,5 +20,6 @@ export default {
 <style lang="scss">
 footer {
   margin-top: auto;
+  padding: 0.75rem 0;
 }
 </style>
