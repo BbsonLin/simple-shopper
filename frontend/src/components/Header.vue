@@ -18,7 +18,7 @@
             </tr>
           </tbody>
         </table>
-        <a href="" class="btn btn-primary btn-block">結帳去</a>
+        <a href="javascript:void(0)" class="btn btn-primary btn-block" @click="$router.push('/cart')">結帳去</a>
       </div>
     </div>
   </nav>
