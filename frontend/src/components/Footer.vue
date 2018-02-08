@@ -18,4 +18,9 @@ export default {
 </script>
 
 <style lang="scss">
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
 </style>

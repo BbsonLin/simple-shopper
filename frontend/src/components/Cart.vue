@@ -1,5 +1,6 @@
 <template>
 <div class="cart">
+  <h1 class="cart-title">Cart</h1>
 </div>
 </template>
 
