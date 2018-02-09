@@ -4,6 +4,6 @@
     - [ ] Basic web page structure (header, content, footer)   
     - [ ] Add to shopping cart  
     - [ ] Add backend API (Flask)  
-        - [ ] Product
+        - [x] Product
         - [ ] Order
         - [ ] User
