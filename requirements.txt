@@ -1,4 +1,13 @@
 # Python web back-end development packages
 Flask >= 0.12
 
+# Python Flask Extensions
+Flask-Marshmallow == 0.7.0
+marshmallow-sqlalchemy == 0.12.0
+Flask-Migrate == 2.0.3
+Flask-Script == 2.0.5
+Flask-SQLAlchemy == 2.1
+Flask-Restplus == 0.10.1
+
+
 gunicorn >= 19.7.1
