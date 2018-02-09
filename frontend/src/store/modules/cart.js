@@ -15,6 +15,9 @@ const getters = {
 const actions = {
   updateCart ({ commit }, data) {
     commit('UPDATE_CART', data)
+  },
+  clearCart ({ commit }) {
+    commit('CLEAR_CART')
   }
 }
 
@@ -31,6 +34,10 @@ const mutations = {
       state.products.push(data)
     }
     state.totalNumber += data.number
+  },
+  CLEAR_CART (state) {
+    state.products = []
+    state.totalNumber = 0
   }
 }
 
