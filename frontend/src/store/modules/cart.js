@@ -19,8 +19,8 @@ const actions = {
   clearCart ({ commit }) {
     commit('CLEAR_CART')
   },
-  removeProduct ({ commit }, id) {
-    commit('REMOVE_PRODUCT', id)
+  removeProduct ({ commit }, product) {
+    commit('REMOVE_PRODUCT', product)
   }
 }
 
@@ -42,8 +42,9 @@ const mutations = {
     state.products = []
     state.totalNumber = 0
   },
-  REMOVE_PRODUCT (state, id) {
-    state.products = state.products.filter(item => item.id !== id)
+  REMOVE_PRODUCT (state, product) {
+    state.products = state.products.filter(item => item.id !== product.id)
+    state.totalNumber -= product.number
   }
 }
 

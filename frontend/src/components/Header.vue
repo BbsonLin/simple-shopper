@@ -14,7 +14,7 @@
         <table class="table">
           <tbody>
             <tr v-for="item in items" :key="item.id">
-              <td><i class="material-icons" @click="removeCartProduct(item.id)">clear</i></td>
+              <td><i class="material-icons" @click="removeCartProduct(item)">clear</i></td>
               <td>{{ item.name }}</td>
               <td>{{ item.number }} 件</td>
               <td>${{ item.price * item.number }}</td>
@@ -60,8 +60,8 @@ export default {
         this.menuOpen = false
       }
     },
-    removeCartProduct (id) {
-      this.removeProduct(id)
+    removeCartProduct (product) {
+      this.removeProduct(product)
     }
   },
   created () {
