@@ -1,7 +1,9 @@
 # Todo
 
-* Basic web page structure (header, content, footer)  
-* List products  
-* Add to shopping cart  
-* Add backend API (Flask)  
-* ***Tag v0.1.0***
+- [ ] ***Tag v0.1.0***
+    - [ ] Basic web page structure (header, content, footer)   
+    - [ ] Add to shopping cart  
+    - [ ] Add backend API (Flask)  
+        - [ ] Product
+        - [ ] Order
+        - [ ] User
