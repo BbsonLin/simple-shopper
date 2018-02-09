@@ -1,4 +1,5 @@
 app:
+	make clean
 	rm -rf public/
 	pip install -r requirements.txt
 	cd frontend && yarn install --force && yarn build

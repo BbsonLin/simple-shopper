@@ -7,7 +7,6 @@ from app import create_app, init_db
 from config import config
 
 extra_dirs = config[os.environ.get('FLASK_CONFIG', 'development')].EXTRA_DIRS
-print('extra_dirs', extra_dirs)
 extra_files = extra_dirs[:]
 for extra_dir in extra_dirs:
     for dirname, dirs, files in os.walk(extra_dir):

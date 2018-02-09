@@ -41,7 +41,5 @@ class Product(db.Model, CRUDModel):
         categories = json.load(open('./products.json'))
         for cat_name, products in categories.items():
             cat_obj = Category.create(name=cat_name)
-            print('Create', cat_obj)
             for p in products:
                 product_obj = Product.create(**p, category_id=cat_obj.id)
-                print('Create', product_obj)
