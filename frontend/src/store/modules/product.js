@@ -19,8 +19,8 @@ const actions = {
   setActiveCategories ({ commit }, payload) {
     console.log('setActiveCategories', payload)
     commit('UPDATE_ACTIVE_CATEGORIES', payload)
-    axios.get('/product', { params: { 'url': payload.url } }).then(returnData => {
-      commit('UPDATE_PRODUCT_LIST', returnData.data)
+    axios.get('/product', { params: { 'name': payload.name } }).then(returnData => {
+      commit('UPDATE_PRODUCT_LIST', returnData)
     })
   }
 }
