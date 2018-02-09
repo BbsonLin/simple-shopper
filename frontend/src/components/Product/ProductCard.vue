@@ -5,6 +5,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
         <p class="card-text">{{ product.description }}</p>
+        <p class="price">${{ product.price }}</p>
       </div>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -75,5 +76,15 @@ export default {
     transform: scale(1.2);
     transition: transform 1s;
   }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+
+    .price {
+      margin-top: auto;
+    }
+  }
 }
+
 </style>
