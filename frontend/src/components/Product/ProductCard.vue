@@ -38,7 +38,7 @@ export default {
   methods: {
     ...mapActions(['updateCart']),
     decrease () {
-      if (this.number > 0) {
+      if (this.number > 1) {
         this.number -= 1
       }
     },
