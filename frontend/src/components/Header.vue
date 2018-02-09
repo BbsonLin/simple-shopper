@@ -14,6 +14,7 @@
         <table class="table">
           <tbody>
             <tr v-for="item in items" :key="item.id">
+              <td><i class="material-icons">clear</i></td>
               <td>{{ item.name }}</td>
               <td>{{ item.number }} 件</td>
               <td>${{ item.price * item.number }}</td>
