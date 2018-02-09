@@ -14,7 +14,7 @@
         <table class="table">
           <tbody>
             <tr v-for="item in items" :key="item.id">
-              <td><i class="material-icons">clear</i></td>
+              <td><i class="material-icons" @click="removeCartProduct(item.id)">clear</i></td>
               <td>{{ item.name }}</td>
               <td>{{ item.number }} 件</td>
               <td>${{ item.price * item.number }}</td>
@@ -46,7 +46,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['clearCart']),
+    ...mapActions(['clearCart', 'removeProduct']),
     toggleMenu () {
       this.menuOpen = !this.menuOpen
     },
@@ -59,6 +59,9 @@ export default {
       } else if ((el !== target) && !el.contains(target)) {
         this.menuOpen = false
       }
+    },
+    removeCartProduct (id) {
+      this.removeProduct(id)
     }
   },
   created () {
@@ -104,5 +107,9 @@ export default {
   &.open {
     display: block;
   }
+}
+
+.material-icons {
+  cursor: pointer;
 }
 </style>
