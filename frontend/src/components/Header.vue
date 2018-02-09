@@ -16,7 +16,7 @@
             <tr v-for="item in items" :key="item.id">
               <td>{{ item.name }}</td>
               <td>{{ item.number }} 件</td>
-              <td>${{ item.price }}</td>
+              <td>${{ item.price * item.number }}</td>
             </tr>
           </tbody>
         </table>
