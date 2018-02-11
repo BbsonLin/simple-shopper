@@ -1,34 +1,48 @@
 {
     "分類一": [
         {
+            "id": 1,
             "image": "https://images.unsplash.com/photo-1453831362806-3d5577f014a4",
-            "name": "商品一", "description": "一個不錯的商品"
+            "name": "商品一", "description": "一個不錯的商品",
+            "price": 1000
         },
         {
+            "id": 2,
             "image": "https://images.unsplash.com/photo-1473093226795-af9932fe5856",
-            "name": "商品二", "description": "另一個不錯的商品"
+            "name": "商品二", "description": "另一個不錯的商品",
+            "price": 100
         },
         {
+            "id": 3,
             "image": "https://images.unsplash.com/photo-1473093226795-af9932fe5856",
-            "name": "商品一", "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora quam quia facilis dolor aliquid veritatis."
+            "name": "商品一", "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora quam quia facilis dolor aliquid veritatis.",
+            "price": 9000
         },
         {
+            "id": 4,
             "image": "https://images.unsplash.com/photo-1453831362806-3d5577f014a4",
-            "name": "商品二", "description": "另一個不錯的商品"
+            "name": "商品二", "description": "另一個不錯的商品",
+            "price": 600
         },
         {
+            "id": 5,
             "image": "https://images.unsplash.com/photo-1473093226795-af9932fe5856",
-            "name": "商品一", "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora quam quia facilis dolor aliquid veritatis."
+            "name": "商品一", "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora quam quia facilis dolor aliquid veritatis.",
+            "price": 500
         }
     ],
     "分類二": [
         {
+            "id": 6,
             "image": "https://images.unsplash.com/photo-1453831362806-3d5577f014a4",
-            "name": "商品一", "description": "一個不錯的商品"
+            "name": "商品一", "description": "一個不錯的商品",
+            "price": 2000
         },
         {
+            "id": 7,
             "image": "https://images.unsplash.com/photo-1473093226795-af9932fe5856",
-            "name": "商品二", "description": "另一個不錯的商品"
+            "name": "商品二", "description": "另一個不錯的商品",
+            "price": 3000
         }
     ]
 }

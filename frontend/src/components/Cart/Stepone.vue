@@ -21,6 +21,9 @@
       </tr>
     </tbody>
   </table>
+  <div class="total">
+    <span>總金額 $</span>
+  </div>
 </div>
 </template>
 
