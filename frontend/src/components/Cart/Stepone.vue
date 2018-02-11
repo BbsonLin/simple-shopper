@@ -21,8 +21,9 @@
       </tr>
     </tbody>
   </table>
-  <div class="total">
-    <span>總金額 $</span>
+  <div class="summary">
+    <h5>總金額 ${{totalAmount}}</h5>
+    <button class="btn btn-primary">結帳</button>
   </div>
 </div>
 </template>
@@ -36,6 +37,22 @@ export default {
       cartProducts: 'getCartProducts',
       totalNumber: 'getTotalNumber'
     })
+  },
+  data () {
+    return {
+      totalAmount: 0
+    }
+  },
+  methods: {
+    calTotalAmount () {
+      this.totalAmount = 0
+      this.cartProducts.forEach(product => {
+        this.totalAmount += (product.number * product.price)
+      })
+    }
+  },
+  mounted () {
+    this.calTotalAmount()
   }
 }
 </script>
@@ -47,6 +64,15 @@ export default {
   .shop-list {
     display: flex;
     justify-content: flex-start;
+  }
+
+  .summary {
+    display: flex;
+    justify-content: flex-end;
+
+    h5 {
+      margin: auto 5px auto 0;
+    }
   }
 }
 </style>

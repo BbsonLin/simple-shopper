@@ -3,9 +3,6 @@
   <h1 class="cart-title">Cart</h1>
   <empty v-if="!totalNumber"></empty>
   <stepone v-if="totalNumber && step===1"></stepone>
-  <div class="check-button">
-    <button class="btn btn-primary" v-if="totalNumber" @click="cartEvent">{{ button.content }}</button>
-  </div>
 </div>
 </template>
 
@@ -21,30 +18,13 @@ export default {
   },
   data () {
     return {
-      step: 1,
-      button: {
-        content: '結帳'
-      }
+      step: 1
     }
   },
   computed: {
     ...mapGetters({
       totalNumber: 'getTotalNumber'
     })
-  },
-  methods: {
-    cartEvent () {
-      switch (this.step) {
-        case 1:
-          this.step++
-          this.button.content = '完成'
-          break
-        case 2:
-          this.step = 1
-          this.button.content = '結帳'
-          break
-      }
-    }
   }
 }
 </script>
