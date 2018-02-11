@@ -38,9 +38,11 @@ export default {
         case 1:
           this.step++
           this.button.content = '完成'
+          break
         case 2:
           this.step = 1
           this.button.content = '結帳'
+          break
       }
     }
   }
