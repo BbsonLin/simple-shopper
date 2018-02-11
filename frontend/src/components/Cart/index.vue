@@ -1,7 +1,10 @@
 <template>
 <div class="cart">
   <h1 class="cart-title">Cart</h1>
+  {{ totalNumber }}
   <empty v-if="!totalNumber"></empty>
+  <!-- <stepone v&#45;if="step===1"></stepone> -->
+  <button class="btn btn-primary check-button" v-if="totalNumber">下一步</button>
 </div>
 </template>
 
@@ -28,5 +31,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.check-button {
+  margin-left: auto;
 }
 </style>
