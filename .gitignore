@@ -1,5 +1,4 @@
 public/*
-
 __pycache__
 
 # SQLite database
@@ -13,3 +12,4 @@ migrations/
 *.ntvs*
 *.njsproj
 *.sln
+.DS_Store
