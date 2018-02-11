@@ -1,5 +1,8 @@
 <template>
 <div class="stepone">
+  <div class="shop-list">
+    <h4>商品列表</h4>
+  </div>
   <table class="table">
     <tbody>
       <tr class="table-active">
@@ -37,5 +40,10 @@ export default {
 <style lang="scss">
 .stepone {
   width: 80%;
+
+  .shop-list {
+    display: flex;
+    justify-content: flex-start;
+  }
 }
 </style>
