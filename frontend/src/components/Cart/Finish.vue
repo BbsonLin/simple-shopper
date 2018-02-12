@@ -3,9 +3,10 @@
   <div class="finish-title">
     <h2>結帳明細</h2>
   </div>
-  <div class="check-status">
+  <div class="status-title">
     <h4>交易狀態</h4>
   </div>
+  <check-status></check-status>
   <shop-list></shop-list>
   <div class="check-title">
     <h4>付款明細</h4>
@@ -16,11 +17,13 @@
 
 <script>
 import ShopList from './ShopList'
+import CheckStatus from './CheckStatus'
 import Check from './Check'
 export default {
   name: 'finish',
   components: {
     ShopList,
+    CheckStatus,
     Check
   }
 }
@@ -33,7 +36,7 @@ export default {
   padding: 10px;
 
   .finish-title,
-  .check-status,
+  .status-title,
   .check-title {
     display: flex;
   }
