@@ -84,7 +84,6 @@ const mutations = {
   UPDATE_CHECK (state, data) {
     state.check.method = data.method
     state.check.store = data.store
-    console.log(state)
   }
 }
 

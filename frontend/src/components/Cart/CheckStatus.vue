@@ -9,6 +9,15 @@
         <td>訂單狀態</td>
         <td>操作</td>
       </tr>
+      <tr>
+        <td>{{ check.id }}</td>
+        <td>{{ check.datetime }}</td>
+        <td>{{ check.totalAmount }}</td>
+        <td>{{ check.status }}</td>
+        <td>
+          <a href="javascript(0)">取消訂單</a>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -16,7 +25,17 @@
 
 <script>
 export default {
-  name: 'check-status'
+  name: 'check-status',
+  data () {
+    return {
+      check: {
+        id: '00001111',
+        datetime: '201888-02-12 18:05',
+        totalAmount: 1000,
+        status: '未付款'
+      }
+    }
+  }
 }
 </script>
 
