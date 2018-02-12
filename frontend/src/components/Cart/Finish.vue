@@ -11,20 +11,20 @@
   <div class="check-title">
     <h4>付款明細</h4>
   </div>
-  <check></check>
+  <check-info></check-info>
 </div>
 </template>
 
 <script>
 import ShopList from './ShopList'
 import CheckStatus from './CheckStatus'
-import Check from './Check'
+import CheckInfo from './CheckInfo'
 export default {
   name: 'finish',
   components: {
     ShopList,
     CheckStatus,
-    Check
+    CheckInfo
   }
 }
 </script>

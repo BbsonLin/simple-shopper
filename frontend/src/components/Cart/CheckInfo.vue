@@ -1,5 +1,5 @@
 <template>
-<div class="check">
+<div class="check-info">
   <div class="steptwo check-form" v-if="step===2">
     <div class="form-group">
       <label>取貨地點</label>
@@ -29,7 +29,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'check',
+  name: 'check-info',
   data () {
     return {
       selectedMethod: { value: 0, label: 'wechat' },
