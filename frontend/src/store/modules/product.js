@@ -17,7 +17,7 @@ const getters = {
 
 const actions = {
   setActiveCategories ({ commit }, payload) {
-    console.log('setActiveCategories', payload)
+    // console.log('setActiveCategories', payload)
     commit('UPDATE_ACTIVE_CATEGORIES', payload)
     axios.get('/product', { params: { 'name': payload.name } }).then(returnData => {
       commit('UPDATE_PRODUCT_LIST', returnData)
@@ -27,11 +27,11 @@ const actions = {
 
 const mutations = {
   UPDATE_ACTIVE_CATEGORIES (state, cat) {
-    console.log('UPDATE_ACTIVE_CATEGORIES', cat)
+    // console.log('UPDATE_ACTIVE_CATEGORIES', cat)
     state.activeCategories = cat
   },
   UPDATE_PRODUCT_LIST (state, products) {
-    console.log('UPDATE_PRODUCT_LIST', products)
+    // console.log('UPDATE_PRODUCT_LIST', products)
     state.products = products.data
   }
 }

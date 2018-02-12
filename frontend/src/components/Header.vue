@@ -8,24 +8,27 @@
         <span class="badge badge-pill badge-danger">{{ totalNumber }}</span>
       </button>
       <div class="shopper-menu" :class="{ 'open': menuOpen }">
-        <h6>已選擇商品</h6>
+        <h6>已選擇商品
+          <button class="btn btn-link" @click="clearCart">清空</button>
+        </h6>
         <table class="table">
           <tbody>
             <tr v-for="item in items" :key="item.id">
+              <td><i class="material-icons" @click="removeCartProduct(item)">clear</i></td>
               <td>{{ item.name }}</td>
               <td>{{ item.number }} 件</td>
-              <td>${{ item.price }}</td>
+              <td>${{ item.price * item.number }}</td>
             </tr>
           </tbody>
         </table>
-        <a href="" class="btn btn-primary btn-block">結帳去</a>
+        <a href="javascript:void(0)" class="btn btn-primary btn-block" @click="$router.push('/cart')">結帳去</a>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -43,6 +46,7 @@ export default {
     })
   },
   methods: {
+    ...mapActions(['clearCart', 'removeProduct']),
     toggleMenu () {
       this.menuOpen = !this.menuOpen
     },
@@ -55,6 +59,9 @@ export default {
       } else if ((el !== target) && !el.contains(target)) {
         this.menuOpen = false
       }
+    },
+    removeCartProduct (product) {
+      this.removeProduct(product)
     }
   },
   created () {
@@ -100,5 +107,9 @@ export default {
   &.open {
     display: block;
   }
+}
+
+.material-icons {
+  cursor: pointer;
 }
 </style>

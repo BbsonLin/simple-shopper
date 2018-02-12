@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import VueMultiselect from 'vue-multiselect'
+import 'vue-multiselect/dist/vue-multiselect.min.css'
 
-Vue.config.productionTip = false
+Vue.component('multiselect', VueMultiselect)
 
 /* eslint-disable no-new */
 new Vue({
