@@ -30,7 +30,7 @@ export default {
     return {
       check: {
         id: '00001111',
-        datetime: '201888-02-12 18:05',
+        datetime: '2018-02-12 18:05',
         totalAmount: 1000,
         status: '未付款'
       }
