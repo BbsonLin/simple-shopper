@@ -35,25 +35,12 @@ export default {
   computed: {
     ...mapGetters({
       cartProducts: 'getCartProducts',
-      totalNumber: 'getTotalNumber'
+      totalNumber: 'getTotalNumber',
+      totalAmount: 'getTotalAmount'
     })
   },
-  data () {
-    return {
-      totalAmount: 0
-    }
-  },
   methods: {
-    ...mapActions(['addStep']),
-    calTotalAmount () {
-      this.totalAmount = 0
-      this.cartProducts.forEach(product => {
-        this.totalAmount += (product.number * product.price)
-      })
-    }
-  },
-  mounted () {
-    this.calTotalAmount()
+    ...mapActions(['addStep'])
   }
 }
 </script>

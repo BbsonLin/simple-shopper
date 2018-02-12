@@ -19,9 +19,9 @@
       </tr>
     </tbody>
   </table>
-  <!-- <div class="summary"> -->
-  <!--   <h5>總金額 ${{totalAmount}}</h5> -->
-  <!-- </div> -->
+  <div class="summary">
+    <h5>總金額 ${{totalAmount}}</h5>
+  </div>
 </div>
 </template>
 
@@ -36,7 +36,8 @@ export default {
   computed: {
     ...mapGetters({
       cartProducts: 'getCartProducts',
-      totalNumber: 'getTotalNumber'
+      totalNumber: 'getTotalNumber',
+      totalAmount: 'getTotalAmount'
     })
   }
 }

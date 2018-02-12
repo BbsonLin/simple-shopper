@@ -1,6 +1,7 @@
 const state = {
   products: [],
   totalNumber: 0,
+  totalAmount: 0,
   step: 1
 }
 
@@ -11,6 +12,9 @@ const getters = {
   getTotalNumber: (state) => {
     return state.totalNumber
   },
+  getTotalAmount: (state) => {
+    return state.totalAmount
+  },
   getStep: (state) => {
     return state.step
   }
@@ -19,12 +23,14 @@ const getters = {
 const actions = {
   updateCart ({ commit }, data) {
     commit('UPDATE_CART', data)
+    commit('CALTOTALAMOUNT')
   },
   clearCart ({ commit }) {
     commit('CLEAR_CART')
   },
   removeProduct ({ commit }, product) {
     commit('REMOVE_PRODUCT', product)
+    commit('CALTOTALAMOUNT')
   },
   addStep ({ commit }) {
     commit('ADD_STEP')
@@ -48,6 +54,7 @@ const mutations = {
   CLEAR_CART (state) {
     state.products = []
     state.totalNumber = 0
+    state.totalAmout = 0
     state.step = 1
   },
   REMOVE_PRODUCT (state, product) {
@@ -56,6 +63,13 @@ const mutations = {
   },
   ADD_STEP (state) {
     state.step++
+  },
+  CALTOTALAMOUNT (state) {
+    let totalAmount = 0
+    state.products.forEach(product => {
+      totalAmount += (product.number * product.price)
+    })
+    state.totalAmount = totalAmount
   }
 }
 
