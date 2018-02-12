@@ -3,18 +3,21 @@
   <h1 class="cart-title">Cart</h1>
   <empty v-if="!totalNumber"></empty>
   <stepone v-if="totalNumber && step===1"></stepone>
+  <steptwo v-if="totalNumber && step===2"></steptwo>
 </div>
 </template>
 
 <script>
 import Empty from './Empty'
 import Stepone from './Stepone'
+import Steptwo from './Steptwo'
 import { mapGetters } from 'vuex'
 export default {
   name: 'cart',
   components: {
     Empty,
-    Stepone
+    Stepone,
+    Steptwo
   },
   computed: {
     ...mapGetters({

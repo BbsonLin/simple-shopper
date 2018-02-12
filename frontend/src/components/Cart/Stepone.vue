@@ -23,13 +23,13 @@
   </table>
   <div class="summary">
     <h5>總金額 ${{totalAmount}}</h5>
-    <button class="btn btn-primary">結帳</button>
+    <button class="btn btn-primary" @click="addStep">結帳</button>
   </div>
 </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'stepone',
   computed: {
@@ -44,6 +44,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['addStep']),
     calTotalAmount () {
       this.totalAmount = 0
       this.cartProducts.forEach(product => {

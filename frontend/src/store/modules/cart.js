@@ -25,6 +25,9 @@ const actions = {
   },
   removeProduct ({ commit }, product) {
     commit('REMOVE_PRODUCT', product)
+  },
+  addStep ({ commit }) {
+    commit('ADD_STEP')
   }
 }
 
@@ -50,6 +53,9 @@ const mutations = {
   REMOVE_PRODUCT (state, product) {
     state.products = state.products.filter(item => item.id !== product.id)
     state.totalNumber -= product.number
+  },
+  ADD_STEP (state) {
+    state.step++
   }
 }
 
