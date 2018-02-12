@@ -6,20 +6,22 @@
   <div class="check-status">
     <h4>交易狀態</h4>
   </div>
-  <div class="check">
-    <div class="form-group"></div>
-    <div class="form-group"></div>
-  </div>
   <shop-list></shop-list>
+  <div class="check-title">
+    <h4>付款明細</h4>
+  </div>
+  <check></check>
 </div>
 </template>
 
 <script>
 import ShopList from './ShopList'
+import Check from './Check'
 export default {
   name: 'finish',
   components: {
-    ShopList
+    ShopList,
+    Check
   }
 }
 </script>
@@ -30,12 +32,11 @@ export default {
   border: 1px solid #eee;
   padding: 10px;
 
-  .finish-title {
+  .finish-title,
+  .check-status,
+  .check-title {
     display: flex;
   }
 
-  .check-status {
-    display: flex;
-  }
 }
 </style>

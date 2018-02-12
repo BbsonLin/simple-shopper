@@ -1,15 +1,27 @@
 <template>
 <div class="check">
-  <div class="form-group">
-    <label>取貨地點</label>
-    <multiselect v-model="selectedStore" :options="stores" label="label" :searchable="false" :allow-empty="false" :show-labels="false" v-if="step===2"></multiselect>
+  <div class="steptwo check-form" v-if="step===2">
+    <div class="form-group">
+      <label>取貨地點</label>
+      <multiselect v-model="selectedStore" :options="stores" label="label" :searchable="false" :allow-empty="false" :show-labels="false"></multiselect>
+    </div>
+    <div class="form-group">
+      <label>付款方式</label>
+      <button class="btn" :class="buttonType" @click="checkMethod('wechat')">微信支付</button>
+    </div>
+    <div class="summary">
+      <button class="btn btn-primary" :disabled="disabled" @click="updateCheckInfo">完成</button>
+    </div>
   </div>
-  <div class="form-group">
-    <label>付款方式</label>
-    <button class="btn" :class="buttonType" @click="checkMethod('wechat')" v-if="step===2">微信支付</button>
-  </div>
-  <div class="summary" v-if="step===2">
-    <button class="btn btn-primary" :disabled="disabled" @click="updateCheckInfo">完成</button>
+  <div class="stepthree check-form" v-if="step===3">
+    <div class="form-group">
+      <h5>取貨地點：</h5>
+      <h6>{{ checkInfo.store.label }}</h6>
+    </div>
+    <div class="form-group">
+      <h5>付款方式：</h5>
+      <h6>{{ checkInfo.method.label }}</h6>
+    </div>
   </div>
 </div>
 </template>
@@ -38,7 +50,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      step: 'getStep'
+      step: 'getStep',
+      checkInfo: 'getCheck'
     })
   },
   methods: {
@@ -61,9 +74,10 @@ export default {
 </script>
 
 <style lang="scss">
-.check {
+.check-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   .form-group {
     display: inline-flex;
@@ -84,4 +98,14 @@ export default {
     justify-content: flex-end;
   }
 }
+
+.stepthree {
+  padding: 10px;
+
+  h5,
+  h6 {
+    margin: auto 0;
+  }
+}
+
 </style>
