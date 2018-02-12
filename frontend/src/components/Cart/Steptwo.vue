@@ -1,9 +1,7 @@
 <template>
 <div class="steptwo">
   <shop-list></shop-list>
-  <div class="summary">
-    <h5>總金額 ${{totalAmount}}</h5>
-  </div>
+  <h5 class="amount">總金額 ${{totalAmount}}</h5>
 </div>
 </template>
 
@@ -24,4 +22,11 @@ export default {
 </script>
 
 <style lang="scss">
+.steptwo {
+  width: 80%;
+
+  .amount {
+    text-align: right;
+  }
+}
 </style>
