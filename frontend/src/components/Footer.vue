@@ -21,5 +21,11 @@ export default {
 footer {
   margin-top: auto;
   padding: 0.75rem 0;
+
+  .social {
+    i {
+      font-size: 24px;
+    }
+  }
 }
 </style>
