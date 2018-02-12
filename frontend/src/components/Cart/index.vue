@@ -16,14 +16,10 @@ export default {
     Empty,
     Stepone
   },
-  data () {
-    return {
-      step: 1
-    }
-  },
   computed: {
     ...mapGetters({
-      totalNumber: 'getTotalNumber'
+      totalNumber: 'getTotalNumber',
+      step: 'getStep'
     })
   }
 }

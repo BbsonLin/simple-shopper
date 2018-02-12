@@ -1,6 +1,7 @@
 const state = {
   products: [],
-  totalNumber: 0
+  totalNumber: 0,
+  step: 1
 }
 
 const getters = {
@@ -9,6 +10,9 @@ const getters = {
   },
   getTotalNumber: (state) => {
     return state.totalNumber
+  },
+  getStep: (state) => {
+    return state.step
   }
 }
 
@@ -41,6 +45,7 @@ const mutations = {
   CLEAR_CART (state) {
     state.products = []
     state.totalNumber = 0
+    state.step = 1
   },
   REMOVE_PRODUCT (state, product) {
     state.products = state.products.filter(item => item.id !== product.id)
