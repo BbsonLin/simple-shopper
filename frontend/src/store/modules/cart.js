@@ -2,6 +2,10 @@ const state = {
   products: [],
   totalNumber: 0,
   totalAmount: 0,
+  check: {
+    method: {},
+    store: {}
+  },
   step: 1
 }
 
@@ -17,6 +21,9 @@ const getters = {
   },
   getStep: (state) => {
     return state.step
+  },
+  getCheck: (state) => {
+    return state.check
   }
 }
 
@@ -34,6 +41,9 @@ const actions = {
   },
   addStep ({ commit }) {
     commit('ADD_STEP')
+  },
+  updateCheck ({ commit }, data) {
+    commit('UPDATE_CHECK', data)
   }
 }
 
@@ -70,6 +80,11 @@ const mutations = {
       totalAmount += (product.number * product.price)
     })
     state.totalAmount = totalAmount
+  },
+  UPDATE_CHECK (state, data) {
+    state.check.method = data.method
+    state.check.store = data.store
+    console.log(state)
   }
 }
 

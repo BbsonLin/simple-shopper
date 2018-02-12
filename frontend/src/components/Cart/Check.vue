@@ -2,24 +2,25 @@
 <div class="check">
   <div class="form-group">
     <label>取貨地點</label>
-    <multiselect id="storeSelect" v-model="selectedStore" :options="stores" label="label" :searchable="false" :allow-empty="false" :show-labels="false"></multiselect>
+    <multiselect v-model="selectedStore" :options="stores" label="label" :searchable="false" :allow-empty="false" :show-labels="false" v-if="step===2"></multiselect>
   </div>
   <div class="form-group">
     <label>付款方式</label>
-    <button class="btn" :class="buttonType" @click="checkMethod('wechat')">微信支付</button>
+    <button class="btn" :class="buttonType" @click="checkMethod('wechat')" v-if="step===2">微信支付</button>
   </div>
-  <div class="summary">
-    <button class="btn btn-primary" :disabled="disabled" @click="addStep">完成</button>
+  <div class="summary" v-if="step===2">
+    <button class="btn btn-primary" :disabled="disabled" @click="updateCheckInfo">完成</button>
   </div>
 </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'check',
   data () {
     return {
+      selectedMethod: { value: 0, label: 'wechat' },
       selectedStore: { value: 0, label: '北京' },
       stores: [
         {
@@ -35,8 +36,13 @@ export default {
       disabled: true
     }
   },
+  computed: {
+    ...mapGetters({
+      step: 'getStep'
+    })
+  },
   methods: {
-    ...mapActions(['addStep']),
+    ...mapActions(['addStep', 'updateCheck']),
     checkMethod (type) {
       switch (type) {
         case 'wechat':
@@ -44,6 +50,11 @@ export default {
           this.disabled = false
           break
       }
+    },
+    updateCheckInfo () {
+      let data = { method: this.selectedMethod, store: this.selectedStore }
+      this.updateCheck(data)
+      this.addStep()
     }
   }
 }
