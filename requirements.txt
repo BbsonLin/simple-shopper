@@ -9,5 +9,6 @@ Flask-Script == 2.0.5
 Flask-SQLAlchemy == 2.1
 Flask-Restplus == 0.10.1
 
+flask8 == 3.5.0
 
 gunicorn >= 19.7.1
