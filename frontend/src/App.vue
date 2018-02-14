@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ShopperFooter from './Components/Footer'
+import ShopperFooter from './components/Footer'
 export default {
   name: 'app',
   components: {
