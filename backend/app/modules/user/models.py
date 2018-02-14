@@ -6,7 +6,7 @@ class User(db.Model, CRUDModel):
     name = db.Column(db.String(200))
 
     # One-to-many
-    checks = db.relationship('Check', back_populates='User')
+    checks = db.relationship('Check', back_populates='user')
 
     def __repr__(self):
         return ("<{class_name}("

@@ -1,6 +1,7 @@
 import json
 
 from app.extensions import db, CRUDModel
+from app.modules.cart.models import OrderDetail
 
 
 class Category(db.Model, CRUDModel):
@@ -29,7 +30,9 @@ class Product(db.Model, CRUDModel):
 
     # Many-to-One
     category = db.relationship('Category', back_populates='products')
-    order_detail = db.relationship('OrderDetail', back_populates='product')
+
+    # One-to-many
+    order_details = db.relationship('OrderDetail', back_populates='product')
 
     def __repr__(self):
         return ("<{class_name}("

@@ -1,4 +1,5 @@
 from app.extensions import db, CRUDModel
+from app.modules.user.models import User
 
 
 class Order(db.Model, CRUDModel):
@@ -6,6 +7,7 @@ class Order(db.Model, CRUDModel):
 
     # One-to-Many
     order_details = db.relationship('OrderDetail', back_populates='order')
+    checks = db.relationship('Check', back_populates='order')
 
     def __repr__(self):
         return ("<{class_name}("
@@ -53,7 +55,7 @@ class Check(db.Model, CRUDModel):
                 ")>".format(class_name=self.__class__.__name__, self=self))
 
 
-class Method(db.model, CRUDModel):
+class Method(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(200))
 
@@ -67,12 +69,12 @@ class Method(db.model, CRUDModel):
                 ")>".format(class_name=self.__class__.__name__, self=self))
 
 
-class Status(db.model, CRUDModel):
+class Status(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(200))
 
     # One-to-many
-    checks = db.relationship('Check', back_populates='Status')
+    checks = db.relationship('Check', back_populates='status')
 
     def __repr__(self):
         return ("<{class_name}("
@@ -81,12 +83,12 @@ class Status(db.model, CRUDModel):
                 ")>".format(class_name=self.__class__.__name__, self=self))
 
 
-class Store(db.model, CRUDModel):
+class Store(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(200))
 
     # One-to-many
-    checks = db.relationship('Check', back_populates='Store')
+    checks = db.relationship('Check', back_populates='store')
 
     def __repr__(self):
         return ("<{class_name}("
