@@ -57,7 +57,7 @@ class Check(db.Model, CRUDModel):
 
 class Method(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(200))
+    name = db.Column(db.String(50))
 
     # One-to-many
     checks = db.relationship('Check', back_populates='method')
@@ -71,7 +71,7 @@ class Method(db.Model, CRUDModel):
 
 class Status(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(200))
+    name = db.Column(db.String(50))
 
     # One-to-many
     checks = db.relationship('Check', back_populates='status')
@@ -85,7 +85,7 @@ class Status(db.Model, CRUDModel):
 
 class Store(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(200))
+    name = db.Column(db.String(50))
 
     # One-to-many
     checks = db.relationship('Check', back_populates='store')
