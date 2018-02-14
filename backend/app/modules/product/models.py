@@ -29,6 +29,7 @@ class Product(db.Model, CRUDModel):
 
     # Many-to-One
     category = db.relationship('Category', back_populates='products')
+    order_detail = db.relationship('OrderDetail', back_populates='product')
 
     def __repr__(self):
         return ("<{class_name}("

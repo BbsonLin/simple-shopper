@@ -1,0 +1,95 @@
+from app.extensions import db, CRUDModel
+
+
+class Order(db.Model, CRUDModel):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    # One-to-Many
+    order_details = db.relationship('OrderDetail', back_populates='order')
+
+    def __repr__(self):
+        return ("<{class_name}("
+                "id='{self.id}',"
+                ")>".format(class_name=self.__class__.__name__, self=self))
+
+
+class OrderDetail(db.Model, CRUDModel):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    number = db.Column(db.Integer)
+    subtotal = db.Column(db.Integer)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'))
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
+
+    # Many-to-one
+    order = db.relationship('Order', back_populates='order_details')
+    product = db.relationship('Product', back_populates='order_details')
+
+    def __repr__(self):
+        return ("<{class_name}("
+                "id='{self.id}',"
+                ")>".format(class_name=self.__class__.__name__, self=self))
+
+
+class Check(db.Model, CRUDModel):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    update_time = db.Column(db.Integer, default=0)
+    total = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    method_id = db.Column(db.Integer, db.ForeignKey('method.id'))
+    status_id = db.Column(db.Integer, db.ForeignKey('status.id'))
+    store_id = db.Column(db.Integer, db.ForeignKey('store.id'))
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'))
+
+    # Many-to-one
+    user = db.relationship('User', back_populates='checks')
+    method = db.relationship('Method', back_populates='checks')
+    status = db.relationship('Status', back_populates='checks')
+    store = db.relationship('Store', back_populates='checks')
+    order = db.relationship('Order', back_populates='checks')
+
+    def __repr__(self):
+        return ("<{class_name}("
+                "id='{self.id}',"
+                ")>".format(class_name=self.__class__.__name__, self=self))
+
+
+class Method(db.model, CRUDModel):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(200))
+
+    # One-to-many
+    checks = db.relationship('Check', back_populates='method')
+
+    def __repr__(self):
+        return ("<{class_name}("
+                "id='{self.id}',"
+                "name='{self.name}',"
+                ")>".format(class_name=self.__class__.__name__, self=self))
+
+
+class Status(db.model, CRUDModel):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(200))
+
+    # One-to-many
+    checks = db.relationship('Check', back_populates='Status')
+
+    def __repr__(self):
+        return ("<{class_name}("
+                "id='{self.id}',"
+                "name='{self.name}',"
+                ")>".format(class_name=self.__class__.__name__, self=self))
+
+
+class Store(db.model, CRUDModel):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(200))
+
+    # One-to-many
+    checks = db.relationship('Check', back_populates='Store')
+
+    def __repr__(self):
+        return ("<{class_name}("
+                "id='{self.id}',"
+                "name='{self.name}',"
+                ")>".format(class_name=self.__class__.__name__, self=self))
