@@ -14,6 +14,14 @@ class Order(db.Model, CRUDModel):
                 "id='{self.id}',"
                 ")>".format(class_name=self.__class__.__name__, self=self))
 
+    @classmethod
+    def list(order_cls, **kwargs):
+        order_id = kwargs.pop('id', None)
+        if order_id:
+            return Order.query.filter_by(id=order_id).all()
+        else:
+            return None
+
 
 class OrderDetail(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
