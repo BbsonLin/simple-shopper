@@ -7,7 +7,7 @@ from .schemas import ProductSchema
 ns = Namespace('product')
 
 product_argparser = reqparse.RequestParser()
-product_argparser.add_argument('name', type=str, store_missing=False)
+product_argparser.add_argument('id', type=int, store_missing=False)
 
 
 @ns.route('')
