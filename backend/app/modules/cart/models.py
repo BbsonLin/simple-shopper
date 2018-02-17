@@ -117,3 +117,9 @@ class Store(db.Model, CRUDModel):
                 "id='{self.id}',"
                 "name='{self.name}',"
                 ")>".format(class_name=self.__class__.__name__, self=self))
+
+    @staticmethod
+    def insert_default():
+        stores = json.load(open('./seeds/stores.json'))
+        for store in stores:
+            Store.create(**store)
