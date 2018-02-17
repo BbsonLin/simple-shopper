@@ -1,3 +1,5 @@
+import json
+
 from app.extensions import db, CRUDModel
 from app.modules.user.models import User
 
@@ -83,6 +85,11 @@ class Method(db.Model, CRUDModel):
                 "name='{self.name}',"
                 ")>".format(class_name=self.__class__.__name__, self=self))
 
+    @staticmethod
+    def insert_default():
+        methods = json.load(open('./seeds/methods.json'))
+        for method in methods:
+            method_obj = Method.create(**method)
 
 class Status(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

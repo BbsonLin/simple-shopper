@@ -18,6 +18,6 @@ class User(db.Model, CRUDModel):
 
     @staticmethod
     def insert_default():
-        users = json.load(open('./seeds/user.json'))
+        users = json.load(open('./seeds/users.json'))
         for user in users:
             user_obj = User.create(**user)
