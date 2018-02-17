@@ -12,6 +12,7 @@ class BaseConfig(object):
         'product',
         'cart',
         'store',
+        'method',
         'api',
     )
 
