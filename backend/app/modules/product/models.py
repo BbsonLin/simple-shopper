@@ -42,7 +42,7 @@ class Product(db.Model, CRUDModel):
 
     @staticmethod
     def insert_default():
-        categories = json.load(open('./products.json'))
+        categories = json.load(open('./seeds/products.json'))
         for cat_name, products in categories.items():
             cat_obj = Category.create(name=cat_name)
             for p in products:
