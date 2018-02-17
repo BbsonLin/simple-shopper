@@ -14,8 +14,6 @@ class OrderDetailSchema(ma.ModelSchema):
     class Meta:
         model = OrderDetail
 
-    product = ma.Nested(ProductSchema, many=True)
-
 class CheckSchema(ma.ModelSchema):
     class Meta:
         model = Check
