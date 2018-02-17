@@ -48,6 +48,29 @@ class OrderDetail(db.Model, CRUDModel):
                 "id='{self.id}',"
                 ")>".format(class_name=self.__class__.__name__, self=self))
 
+    @classmethod
+    def list(order_detail_cls, **kwargs):
+        many = kwargs.pop('many', False)
+        order_detail_list = order_detail_cls.query.filter_by(**kwargs).all()
+        if len(order_detail_list) > 1 or many is True:
+            return order_detail_list
+        elif len(order_detail_list) == 1:
+            return order_detail_list[0]
+        else:
+            return None
+
+    @classmethod
+    def create(order_detail_cls, **kwargs):
+        product_id = kwargs.get('id')
+        if product_id:
+            kwargs['product_id'] = kwargs.pop('id')
+            new_order_detail = order_detail_cls(**kwargs)
+            db.session.add(new_order_detail)
+            db.session.commit()
+            return new_order_detail
+        else:
+            raise AttributeError('Please set the required fields')
+
 
 class Check(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
