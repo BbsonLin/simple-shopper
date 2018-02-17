@@ -1,4 +1,4 @@
-import json
+import json, time
 
 from app.extensions import db, CRUDModel
 from app.modules.user.models import User
@@ -93,6 +93,30 @@ class Check(db.Model, CRUDModel):
         return ("<{class_name}("
                 "id='{self.id}',"
                 ")>".format(class_name=self.__class__.__name__, self=self))
+
+    @classmethod
+    def list(check_cls, **kwargs):
+        order_id = kwargs.pop('id', None)
+        if order_id:
+            return Check.query.filter_by(**kwargs).all()
+        else:
+            return None
+
+    @classmethod
+    def create(check_cls, **kwargs):
+        order_id = kwargs.get('order_id')
+        if order_id:
+            kwargs['update_time'] = time.time()
+            kwargs['user_id'] = kwargs.pop('userId')
+            kwargs['method_id'] = kwargs.pop('methodId')
+            kwargs['status_id'] = kwargs.pop('statusId')
+            kwargs['store_id'] = kwargs.pop('storeId')
+            new_check = check_cls(**kwargs)
+            db.session.add(new_check)
+            db.session.commit()
+            return new_check
+        else:
+            raise AttributeError('Please set the required fields')
 
 
 class Method(db.Model, CRUDModel):
