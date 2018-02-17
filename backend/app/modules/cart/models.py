@@ -22,6 +22,13 @@ class Order(db.Model, CRUDModel):
         else:
             return None
 
+    @classmethod
+    def create(order_cls, **kwargs):
+        new_order = order_cls(**kwargs)
+        db.session.add(new_order)
+        db.session.commit()
+        return new_order
+
 
 class OrderDetail(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

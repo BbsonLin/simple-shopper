@@ -15,7 +15,7 @@ class OrderApi(Resource):
 
     def get(self):
         args = order_argparser.parse_args()
-        current_app.logger.debug('Order list request: {}'.format(args))
+        current_app.logger.debug('Order GET request: {}'.format(args))
         order_schema = OrderSchema()
 
         order_obj = Order.list(**args)
@@ -23,3 +23,10 @@ class OrderApi(Resource):
             return order_schema.dump(order_obj, many=True)
         else:
             return order_schema.dump(order_obj)
+
+    def post(self):
+        args = order_argparser.parse_args()
+        current_app.logger.debug('Order POST request: {}'.format(args))
+        order_schema = OrderSchema()
+        order_obj = Order.create()
+        return order_schema.dump(order_obj)
