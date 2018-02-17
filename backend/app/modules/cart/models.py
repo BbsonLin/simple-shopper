@@ -2,6 +2,8 @@ import json, time
 
 from app.extensions import db, CRUDModel
 from app.modules.user.models import User
+from app.modules.store.models import Store
+from app.modules.method.models import Method
 
 
 class Order(db.Model, CRUDModel):
@@ -119,25 +121,6 @@ class Check(db.Model, CRUDModel):
             raise AttributeError('Please set the required fields')
 
 
-class Method(db.Model, CRUDModel):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(50))
-
-    # One-to-many
-    checks = db.relationship('Check', back_populates='method')
-
-    def __repr__(self):
-        return ("<{class_name}("
-                "id='{self.id}',"
-                "name='{self.name}',"
-                ")>".format(class_name=self.__class__.__name__, self=self))
-
-    @staticmethod
-    def insert_default():
-        methods = json.load(open('./seeds/methods.json'))
-        for method in methods:
-            method_obj = Method.create(**method)
-
 class Status(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50))
@@ -156,22 +139,3 @@ class Status(db.Model, CRUDModel):
         status = json.load(open('./seeds/status.json'))
         for s in status:
             status_obj = Status.create(**s)
-
-class Store(db.Model, CRUDModel):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(50))
-
-    # One-to-many
-    checks = db.relationship('Check', back_populates='store')
-
-    def __repr__(self):
-        return ("<{class_name}("
-                "id='{self.id}',"
-                "name='{self.name}',"
-                ")>".format(class_name=self.__class__.__name__, self=self))
-
-    @staticmethod
-    def insert_default():
-        stores = json.load(open('./seeds/stores.json'))
-        for store in stores:
-            Store.create(**store)

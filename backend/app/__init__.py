@@ -3,7 +3,9 @@ from config import config
 from app.extensions import db
 from app.modules.product.models import Product
 from app.modules.user.models import User
-from app.modules.cart.models import Method, Store, Status
+from app.modules.cart.models import Status
+from app.modules.store.models import Store
+from app.modules.method.models import Method
 
 
 def init_db():

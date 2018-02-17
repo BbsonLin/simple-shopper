@@ -11,6 +11,7 @@ class BaseConfig(object):
     ENABLED_MODULES = (
         'product',
         'cart',
+        'store',
         'api',
     )
 
