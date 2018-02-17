@@ -3,7 +3,7 @@ from config import config
 from app.extensions import db
 from app.modules.product.models import Product
 from app.modules.user.models import User
-from app.modules.cart.models import Method, Store
+from app.modules.cart.models import Method, Store, Status
 
 
 def init_db():
@@ -12,6 +12,7 @@ def init_db():
     User.insert_default()
     Method.insert_default()
     Store.insert_default()
+    Status.insert_default()
     print('Default products had been created ...')
 
 

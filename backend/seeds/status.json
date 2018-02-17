@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "name": "unpaid"
+    },
+    {
+        "id": 1,
+        "name": "unpaid and expired"
+    },
+    {
+        "id": 2,
+        "name": "cancel order"
+    },
+    {
+        "id": 3,
+        "name": "paid and not pick up"
+    },
+    {
+        "id": 4,
+        "name" : "paid and pick up"
+    }
+]

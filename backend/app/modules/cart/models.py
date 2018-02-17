@@ -104,6 +104,11 @@ class Status(db.Model, CRUDModel):
                 "name='{self.name}',"
                 ")>".format(class_name=self.__class__.__name__, self=self))
 
+    @staticmethod
+    def insert_default():
+        status = json.load(open('./seeds/status.json'))
+        for s in status:
+            status_obj = Status.create(**s)
 
 class Store(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
