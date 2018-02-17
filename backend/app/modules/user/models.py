@@ -1,3 +1,5 @@
+import json
+
 from app.extensions import db, CRUDModel
 
 
@@ -13,3 +15,9 @@ class User(db.Model, CRUDModel):
                 "id='{self.id}',"
                 "name='{self.name}',"
                 ")>".format(class_name=self.__class__.__name__, self=self))
+
+    @staticmethod
+    def insert_default():
+        users = json.load(open('./seeds/user.json'))
+        for user in users:
+            user_obj = User.create(**user)
