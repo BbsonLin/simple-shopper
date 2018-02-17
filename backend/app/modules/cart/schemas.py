@@ -5,11 +5,6 @@ from app.modules.product.schemas import ProductSchema
 from .models import Order, OrderDetail, Check
 
 
-class OrderSchema(ma.ModelSchema):
-    class Meta:
-        model = Order
-
-
 class OrderDetailSchema(ma.ModelSchema):
     class Meta:
         model = OrderDetail
@@ -17,3 +12,10 @@ class OrderDetailSchema(ma.ModelSchema):
 class CheckSchema(ma.ModelSchema):
     class Meta:
         model = Check
+
+class OrderSchema(ma.ModelSchema):
+    class Meta:
+        model = Order
+
+    order_details = ma.Nested(OrderDetailSchema, many=True)
+    checks = ma.Nested(CheckSchema, many=True)
