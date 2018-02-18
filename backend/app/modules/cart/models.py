@@ -74,6 +74,7 @@ class OrderDetail(db.Model, CRUDModel):
             raise AttributeError('Please set the required fields')
 
 
+
 class Check(db.Model, CRUDModel):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     update_time = db.Column(db.Integer, default=0)
@@ -119,6 +120,14 @@ class Check(db.Model, CRUDModel):
             return new_check
         else:
             raise AttributeError('Please set the required fields')
+
+    def update(self, **kwargs):
+        update_check_obj = Check(user_id=self.user_id, method_id=self.method_id,
+                                 store_id=self.store.id, order_id=self.order_id,
+                                 total=self.total, update_time=time.time(), status_id=kwargs['statusId'])
+        db.session.add(update_check_obj)
+        db.session.commit()
+        return update_check_obj
 
 
 class Status(db.Model, CRUDModel):
