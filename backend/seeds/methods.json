@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
-        "name": "wechat"
+        "label": "微信支付",
+        "value": "wechat"
     }
 ]
