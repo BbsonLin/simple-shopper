@@ -39,8 +39,9 @@ export default {
     getProductList () {
       let params = { id: 1 }
       requestProduct.List(params).then(data => {
-        console.log(data)
         this.productList = data
+      }).catch(error => {
+        console.log(error)
       })
     }
   },
