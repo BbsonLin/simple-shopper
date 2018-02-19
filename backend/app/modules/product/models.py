@@ -1,6 +1,7 @@
 import json
 
 from app.extensions import db, CRUDModel
+from app.modules.cart.models import OrderDetail
 
 
 class Category(db.Model, CRUDModel):
@@ -30,6 +31,9 @@ class Product(db.Model, CRUDModel):
     # Many-to-One
     category = db.relationship('Category', back_populates='products')
 
+    # One-to-many
+    order_details = db.relationship('OrderDetail', back_populates='product')
+
     def __repr__(self):
         return ("<{class_name}("
                 "id='{self.id}', "
@@ -38,7 +42,7 @@ class Product(db.Model, CRUDModel):
 
     @staticmethod
     def insert_default():
-        categories = json.load(open('./products.json'))
+        categories = json.load(open('./seeds/products.json'))
         for cat_name, products in categories.items():
             cat_obj = Category.create(name=cat_name)
             for p in products:

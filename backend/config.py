@@ -10,6 +10,9 @@ class BaseConfig(object):
     EXTRA_DIRS = [TEMPLATE_FOLDER, STATIC_FOLDER]
     ENABLED_MODULES = (
         'product',
+        'cart',
+        'store',
+        'method',
         'api',
     )
 

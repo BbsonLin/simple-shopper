@@ -2,11 +2,19 @@ from flask import Flask, jsonify
 from config import config
 from app.extensions import db
 from app.modules.product.models import Product
+from app.modules.user.models import User
+from app.modules.cart.models import Status
+from app.modules.store.models import Store
+from app.modules.method.models import Method
 
 
 def init_db():
     db.create_all()
     Product.insert_default()
+    User.insert_default()
+    Method.insert_default()
+    Store.insert_default()
+    Status.insert_default()
     print('Default products had been created ...')
 
 
