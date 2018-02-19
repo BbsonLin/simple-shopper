@@ -12,7 +12,7 @@
       <div class="col-md-9">
         <div class="row">
           <product-card
-            v-for="product in products"
+            v-for="product in productList"
             :product="product"
             :key="product.id">
           </product-card>
@@ -24,24 +24,28 @@
 
 <script>
 import ProductCard from './ProductCard'
-import { mapGetters, mapActions } from 'vuex'
+import { requestProduct } from '@/api/api'
 
 export default {
   components: {
     ProductCard
   },
-  computed: {
-    ...mapGetters({
-      activeCategories: 'getActiveCategories',
-      categories: 'getCategories',
-      products: 'getProducts'
-    })
+  data () {
+    return {
+      productList: []
+    }
   },
   methods: {
-    ...mapActions(['setActiveCategories'])
+    getProductList () {
+      let params = { id: 1 }
+      requestProduct.List(params).then(data => {
+        console.log(data)
+        this.productList = data
+      })
+    }
   },
   created () {
-    this.setActiveCategories(this.categories[0])
+    this.getProductList()
   }
 }
 </script>

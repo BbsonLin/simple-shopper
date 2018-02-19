@@ -1,8 +1,8 @@
 // Product
 export const product = '/product'
-//Store
+// Store
 export const store = '/store'
-//Method
+// Method
 export const method = '/method'
-//cart
+// Cart
 export const cart = '/cart'
