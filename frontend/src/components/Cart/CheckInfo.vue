@@ -7,7 +7,7 @@
     </div>
     <div class="form-group">
       <label>付款方式</label>
-      <button class="btn" :class="buttonType" @click="checkMethod('wechat')">微信支付</button>
+      <button class="btn" :class="buttonType" v-for="method in methodList" @click="checkMethod(method)">{{ method.label }}</button>
     </div>
     <div class="summary">
       <button class="btn btn-primary" :disabled="disabled" @click="updateCheckInfo">完成</button>
@@ -28,14 +28,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import { requestStore } from '@/api/api'
+import { requestStore, requestMethod } from '@/api/api'
 export default {
   name: 'check-info',
   data () {
     return {
-      selectedMethod: { value: 0, label: 'wechat' },
-      selectedStore: { value: 0, label: '北京' },
+      selectedMethod: null,
+      selectedStore: null,
       storeList: [],
+      methodList: [],
       buttonType: 'btn-outline-secondary',
       disabled: true
     }
@@ -46,13 +47,25 @@ export default {
       checkInfo: 'getCheck'
     })
   },
+  watch: {
+    selectedMethod () {
+      if (this.selectedMethod !== null && this.selectedStore !== null) {
+        this.disabled = false
+      }
+    },
+    selectedStore () {
+      if (this.selectedMethod !== null && this.selectedStore !== null) {
+        this.disabled = false
+      }
+    }
+  },
   methods: {
     ...mapActions(['addStep', 'updateCheck']),
-    checkMethod (type) {
-      switch (type) {
+    checkMethod (method) {
+      switch (method.value) {
         case 'wechat':
           this.buttonType = 'btn-outline-success'
-          this.disabled = false
+          this.selectedMethod = method
           break
       }
     },
@@ -63,13 +76,22 @@ export default {
     },
     getStoreList () {
       requestStore.List().then(data => {
-        console.log(data)
         this.storeList = data
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    getMethodList () {
+      requestMethod.List().then(data => {
+        this.methodList = data
+      }).catch(error => {
+        console.log(error)
       })
     }
   },
   created () {
     this.getStoreList()
+    this.getMethodList()
   }
 }
 </script>
