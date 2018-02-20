@@ -7,7 +7,7 @@ export const requestProduct = {
 }
 
 // Category
-export const requestProduct = {
+export const requestCategory = {
   List: params => { return axios.get(url.category, { params: params }).then(res => res.data) }
 }
 
