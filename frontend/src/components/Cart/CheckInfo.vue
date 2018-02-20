@@ -3,7 +3,7 @@
   <div class="steptwo check-form" v-if="step===2">
     <div class="form-group">
       <label>取貨地點</label>
-      <multiselect v-model="selectedStore" :options="stores" label="label" :searchable="false" :allow-empty="false" :show-labels="false"></multiselect>
+      <multiselect v-model="selectedStore" :options="storeList" label="label" :searchable="false" :allow-empty="false" :show-labels="false"></multiselect>
     </div>
     <div class="form-group">
       <label>付款方式</label>
@@ -28,22 +28,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { requestStore } from '@/api/api'
 export default {
   name: 'check-info',
   data () {
     return {
       selectedMethod: { value: 0, label: 'wechat' },
       selectedStore: { value: 0, label: '北京' },
-      stores: [
-        {
-          value: 0,
-          label: '北京'
-        },
-        {
-          value: 1,
-          label: '上海'
-        }
-      ],
+      storeList: [],
       buttonType: 'btn-outline-secondary',
       disabled: true
     }
@@ -68,7 +60,16 @@ export default {
       let data = { method: this.selectedMethod, store: this.selectedStore }
       this.updateCheck(data)
       this.addStep()
+    },
+    getStoreList () {
+      requestStore.List().then(data => {
+        console.log(data)
+        this.storeList = data
+      })
     }
+  },
+  created () {
+    this.getStoreList()
   }
 }
 </script>
