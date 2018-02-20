@@ -6,6 +6,7 @@
         <h5 class="card-title">{{ product.name }}</h5>
         <p class="card-text">{{ product.description }}</p>
         <p class="price">${{ product.price }}</p>
+        <p class="stock">庫存：{{ product.stock }}</p>
       </div>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -44,7 +45,7 @@ export default {
       }
     },
     increase () {
-      if (this.number < 100) {
+      if (this.number < this.product.stock) {
         this.number += 1
       }
     },
@@ -83,6 +84,10 @@ export default {
 
     .price {
       margin-top: auto;
+    }
+
+    .stock {
+      margin: 0;
     }
   }
 }
