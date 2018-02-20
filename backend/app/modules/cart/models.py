@@ -66,6 +66,8 @@ class OrderDetail(db.Model, CRUDModel):
         product_id = kwargs.get('id')
         if product_id:
             kwargs['product_id'] = kwargs.pop('id')
+            kwargs.pop('name')
+            kwargs.pop('price')
             new_order_detail = order_detail_cls(**kwargs)
             db.session.add(new_order_detail)
             db.session.commit()

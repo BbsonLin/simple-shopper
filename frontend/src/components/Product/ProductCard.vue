@@ -50,8 +50,12 @@ export default {
       }
     },
     addToCart () {
-      let product = JSON.parse(JSON.stringify(this.product))
+      let product = {}
+      product.id = this.product.id
+      product.name = this.product.name
+      product.price = this.product.price
       product.number = this.number
+      product.subtotal = product.number * product.price
       this.updateCart(product)
     }
   }

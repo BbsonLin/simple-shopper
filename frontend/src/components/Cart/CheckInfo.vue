@@ -28,7 +28,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import { requestStore, requestMethod } from '@/api/api'
+import { requestStore, requestMethod, requestCart } from '@/api/api'
 export default {
   name: 'check-info',
   data () {
@@ -45,7 +45,8 @@ export default {
     ...mapGetters({
       step: 'getStep',
       checkInfo: 'getCheck',
-      cartProducts: 'getCartProducts'
+      cartProducts: 'getCartProducts',
+      totalAmount: 'getTotalAmount'
     })
   },
   watch: {
@@ -71,8 +72,12 @@ export default {
       }
     },
     updateCheckInfo () {
-      console.log(this.cartProducts)
-      // let params = { methodId: this.selectedMethod.id, storeId: this.selectedStore.id, statusId: 0 }
+      let params = { userId: 1, methodId: this.selectedMethod.id, storeId: this.selectedStore.id, statusId: 0, products: this.cartProducts, total: this.totalAmount }
+      requestCart.Create(params).then(data => {
+        console.log(data)
+      }).catch(error => {
+        console.log(error)
+      })
       let data = { method: this.selectedMethod, store: this.selectedStore }
       this.updateCheck(data)
       this.addStep()
