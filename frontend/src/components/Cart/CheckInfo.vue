@@ -44,7 +44,8 @@ export default {
   computed: {
     ...mapGetters({
       step: 'getStep',
-      checkInfo: 'getCheck'
+      checkInfo: 'getCheck',
+      cartProducts: 'getCartProducts'
     })
   },
   watch: {
@@ -70,6 +71,8 @@ export default {
       }
     },
     updateCheckInfo () {
+      console.log(this.cartProducts)
+      // let params = { methodId: this.selectedMethod.id, storeId: this.selectedStore.id, statusId: 0 }
       let data = { method: this.selectedMethod, store: this.selectedStore }
       this.updateCheck(data)
       this.addStep()
