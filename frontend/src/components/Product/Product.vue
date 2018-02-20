@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-md-3">
         <div class="list-group sticky-top">
-          <a href="#" v-for="cat in categories" :key="cat.id"
+          <a href="#" v-for="category in categoryList" :key="category.id"
             class="list-group-item list-group-item-action"
-            :class="{'active': activeCategories.id == cat.id}"
-            @click="setActiveCategories(cat)">{{ cat.name }}</a>
+            :class="{'active': activeCategory == category.id}"
+            @click="setActiveCategory(category.id)">{{ category.name }}</a>
         </div>
       </div>
       <div class="col-md-9">
@@ -24,7 +24,7 @@
 
 <script>
 import ProductCard from './ProductCard'
-import { requestProduct } from '@/api/api'
+import { requestProduct, requestCategory } from '@/api/api'
 
 export default {
   components: {
@@ -32,21 +32,35 @@ export default {
   },
   data () {
     return {
-      productList: []
+      productList: [],
+      categoryList: [],
+      activeCategory: 1
     }
   },
   methods: {
-    getProductList () {
-      let params = { id: 1 }
+    getProductList (categoryId) {
+      let params = { id: categoryId }
       requestProduct.List(params).then(data => {
         this.productList = data
       }).catch(error => {
         console.log(error)
       })
+    },
+    getCategoryList () {
+      requestCategory.List().then(data => {
+        this.categoryList = data
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    setActiveCategory (categoryId) {
+      this.activeCategory = categoryId
+      this.getProductList(categoryId)
     }
   },
   created () {
-    this.getProductList()
+    this.getCategoryList()
+    this.getProductList(1)
   }
 }
 </script>
