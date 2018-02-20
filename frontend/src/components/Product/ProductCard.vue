@@ -1,7 +1,7 @@
 <template>
   <div class="col-sm-6 col-md-4 mb-3">
     <div class="card card-shadow border-0 text-center h-100">
-      <img class="card-img-top" :src="product.image" alt="Card image cap">
+      <img class="card-img-top" :src="product.image" :width="240" height="160" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
         <p class="card-text">{{ product.description }}</p>
