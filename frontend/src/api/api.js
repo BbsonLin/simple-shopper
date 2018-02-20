@@ -6,6 +6,11 @@ export const requestProduct = {
   List: params => { return axios.get(url.product, { params: params }).then(res => res.data) }
 }
 
+// Category
+export const requestProduct = {
+  List: params => { return axios.get(url.category, { params: params }).then(res => res.data) }
+}
+
 // Store
 export const requestStore = {
   List: params => { return axios.get(url.store, { params: params }).then(res => res.data) }
