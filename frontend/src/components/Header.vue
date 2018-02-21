@@ -33,10 +33,6 @@ export default {
   data () {
     return {
       menuOpen: false
-      // items: [
-      //   {'id': 1, 'name': '商品一', 'number': 2, 'price': 480},
-      //   {'id': 2, 'name': '商品二', 'number': 3, 'price': 600}
-      // ]
     }
   },
   computed: {

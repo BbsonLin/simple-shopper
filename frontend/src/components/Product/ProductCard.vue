@@ -1,11 +1,12 @@
 <template>
   <div class="col-sm-6 col-md-4 mb-3">
     <div class="card card-shadow border-0 text-center h-100">
-      <img class="card-img-top" :src="product.image" alt="Card image cap">
+      <img class="card-img-top" :src="product.image" :width="240" height="160" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
         <p class="card-text">{{ product.description }}</p>
         <p class="price">${{ product.price }}</p>
+        <p class="stock">庫存：{{ product.stock }}</p>
       </div>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   props: {
     product: {
@@ -36,6 +37,11 @@ export default {
       number: 1
     }
   },
+  computed: {
+    ...mapGetters({
+      cartProducts: 'getCartProducts'
+    })
+  },
   methods: {
     ...mapActions(['updateCart']),
     decrease () {
@@ -44,13 +50,24 @@ export default {
       }
     },
     increase () {
-      if (this.number < 100) {
-        this.number += 1
+      let cartProduct = this.cartProducts.find(item => item.id === this.product.id)
+      if (cartProduct) {
+        if (this.number + cartProduct.number < this.product.stock) {
+          this.number += 1
+        }
+      } else {
+        if (this.number < this.product.stock) {
+          this.number += 1
+        }
       }
     },
     addToCart () {
-      let product = JSON.parse(JSON.stringify(this.product))
+      let product = {}
+      product.id = this.product.id
+      product.name = this.product.name
+      product.price = this.product.price
       product.number = this.number
+      product.subtotal = product.number * product.price
       this.updateCart(product)
     }
   }
@@ -83,6 +100,10 @@ export default {
 
     .price {
       margin-top: auto;
+    }
+
+    .stock {
+      margin: 0;
     }
   }
 }

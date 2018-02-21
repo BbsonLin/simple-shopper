@@ -1,22 +1,22 @@
 [
     {
         "id": 0,
-        "name": "unpaid"
+        "name": "未付款"
     },
     {
         "id": 1,
-        "name": "unpaid and expired"
+        "name": "未付款且訂單過期"
     },
     {
         "id": 2,
-        "name": "cancel order"
+        "name": "取消訂單"
     },
     {
         "id": 3,
-        "name": "paid and not pick up"
+        "name": "付款但尚未取貨"
     },
     {
         "id": 4,
-        "name" : "paid and pick up"
+        "name" : "付款且已取貨"
     }
 ]

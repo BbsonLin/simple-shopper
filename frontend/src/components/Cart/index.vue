@@ -1,6 +1,10 @@
 <template>
 <div class="cart">
-  <h1 class="cart-title">Cart</h1>
+  <div class="cart-title">
+    <i class="material-icons" v-if="totalNumber && step===1" @click="$router.push('/')" title="Back to shop">arrow_back</i>
+    <h1 class="title">Cart</h1>
+    <div class="space" v-if="totalNumber && step===1"></div>
+  </div>
   <empty v-if="!totalNumber"></empty>
   <stepone v-if="totalNumber && step===1"></stepone>
   <steptwo v-if="totalNumber && step===2"></steptwo>
@@ -38,6 +42,22 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .cart-title {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+
+    i {
+      font-size: 35px;
+      margin-top: 5px;
+      margin-right: auto;
+    }
+
+    .space {
+      margin-left: auto;
+    }
+  }
 }
 
 .check-button {

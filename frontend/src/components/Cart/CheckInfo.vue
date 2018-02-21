@@ -3,11 +3,11 @@
   <div class="steptwo check-form" v-if="step===2">
     <div class="form-group">
       <label>取貨地點</label>
-      <multiselect v-model="selectedStore" :options="stores" label="label" :searchable="false" :allow-empty="false" :show-labels="false"></multiselect>
+      <multiselect v-model="selectedStore" :options="storeList" label="label" :searchable="false" :allow-empty="false" :show-labels="false"></multiselect>
     </div>
     <div class="form-group">
       <label>付款方式</label>
-      <button class="btn" :class="buttonType" @click="checkMethod('wechat')">微信支付</button>
+      <button class="btn" :class="buttonType" v-for="method in methodList" @click="checkMethod(method)">{{ method.label }}</button>
     </div>
     <div class="summary">
       <button class="btn btn-primary" :disabled="disabled" @click="updateCheckInfo">完成</button>
@@ -16,11 +16,11 @@
   <div class="stepthree check-form" v-if="step===3">
     <div class="form-group">
       <h5>取貨地點：</h5>
-      <h6>{{ checkInfo.store.label }}</h6>
+      <h6>{{ checkInfo.checks[0].store.label }}</h6>
     </div>
     <div class="form-group">
       <h5>付款方式：</h5>
-      <h6>{{ checkInfo.method.label }}</h6>
+      <h6>{{ checkInfo.checks[0].method.label }}</h6>
     </div>
   </div>
 </div>
@@ -28,22 +28,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { requestStore, requestMethod, requestCart } from '@/api/api'
 export default {
   name: 'check-info',
   data () {
     return {
-      selectedMethod: { value: 0, label: 'wechat' },
-      selectedStore: { value: 0, label: '北京' },
-      stores: [
-        {
-          value: 0,
-          label: '北京'
-        },
-        {
-          value: 1,
-          label: '上海'
-        }
-      ],
+      selectedMethod: null,
+      selectedStore: null,
+      storeList: [],
+      methodList: [],
       buttonType: 'btn-outline-secondary',
       disabled: true
     }
@@ -51,24 +44,60 @@ export default {
   computed: {
     ...mapGetters({
       step: 'getStep',
-      checkInfo: 'getCheck'
+      checkInfo: 'getCheck',
+      cartProducts: 'getCartProducts',
+      totalAmount: 'getTotalAmount'
     })
+  },
+  watch: {
+    selectedMethod () {
+      if (this.selectedMethod !== null && this.selectedStore !== null) {
+        this.disabled = false
+      }
+    },
+    selectedStore () {
+      if (this.selectedMethod !== null && this.selectedStore !== null) {
+        this.disabled = false
+      }
+    }
   },
   methods: {
     ...mapActions(['addStep', 'updateCheck']),
-    checkMethod (type) {
-      switch (type) {
+    checkMethod (method) {
+      switch (method.value) {
         case 'wechat':
           this.buttonType = 'btn-outline-success'
-          this.disabled = false
+          this.selectedMethod = method
           break
       }
     },
     updateCheckInfo () {
-      let data = { method: this.selectedMethod, store: this.selectedStore }
-      this.updateCheck(data)
-      this.addStep()
+      let params = { userId: 1, methodId: this.selectedMethod.id, storeId: this.selectedStore.id, statusId: 0, products: this.cartProducts, total: this.totalAmount }
+      requestCart.Create(params).then(data => {
+        this.updateCheck(data)
+        this.addStep()
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    getStoreList () {
+      requestStore.List().then(data => {
+        this.storeList = data
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    getMethodList () {
+      requestMethod.List().then(data => {
+        this.methodList = data
+      }).catch(error => {
+        console.log(error)
+      })
     }
+  },
+  created () {
+    this.getStoreList()
+    this.getMethodList()
   }
 }
 </script>

@@ -1,14 +1,17 @@
 [
     {
         "id": 1,
-        "name": "台北門市"
+        "label": "台北門市",
+        "value": "taipei"
     },
     {
         "id": 2,
-        "name": "桃園門市"
+        "label": "桃園門市",
+        "value": "taoyuan"
     },
     {
         "id": 3,
-        "name": "新竹門市"
+        "label": "新竹門市",
+        "value": "hsinchu"
     }
 ]

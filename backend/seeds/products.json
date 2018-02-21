@@ -4,31 +4,36 @@
             "id": 1,
             "image": "https://images.unsplash.com/photo-1453831362806-3d5577f014a4",
             "name": "商品一", "description": "一個不錯的商品",
-            "price": 1000
+            "price": 1000,
+            "stock": 5
         },
         {
             "id": 2,
             "image": "https://images.unsplash.com/photo-1473093226795-af9932fe5856",
             "name": "商品二", "description": "另一個不錯的商品",
-            "price": 100
+            "price": 100,
+            "stock": 10
         },
         {
             "id": 3,
             "image": "https://images.unsplash.com/photo-1473093226795-af9932fe5856",
             "name": "商品一", "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora quam quia facilis dolor aliquid veritatis.",
-            "price": 9000
+            "price": 9000,
+            "stock": 20
         },
         {
             "id": 4,
             "image": "https://images.unsplash.com/photo-1453831362806-3d5577f014a4",
             "name": "商品二", "description": "另一個不錯的商品",
-            "price": 600
+            "price": 600,
+            "stock": 50
         },
         {
             "id": 5,
             "image": "https://images.unsplash.com/photo-1473093226795-af9932fe5856",
             "name": "商品一", "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora quam quia facilis dolor aliquid veritatis.",
-            "price": 500
+            "price": 500,
+            "stock": 50
         }
     ],
     "分類二": [
@@ -36,13 +41,15 @@
             "id": 6,
             "image": "https://images.unsplash.com/photo-1453831362806-3d5577f014a4",
             "name": "商品一", "description": "一個不錯的商品",
-            "price": 2000
+            "price": 2000,
+            "stock": 50
         },
         {
             "id": 7,
             "image": "https://images.unsplash.com/photo-1473093226795-af9932fe5856",
             "name": "商品二", "description": "另一個不錯的商品",
-            "price": 3000
+            "price": 3000,
+            "stock": 50
         }
     ]
 }
