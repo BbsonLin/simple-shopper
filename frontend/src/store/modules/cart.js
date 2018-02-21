@@ -52,6 +52,7 @@ const mutations = {
     if (state.products.length) {
       let product = state.products.find(item => item.id === data.id)
       if (product) {
+        product.number += data.number
         product.subtotal = product.number * product.price
       } else {
         state.products.push(data)

@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   props: {
     product: {
@@ -37,6 +37,11 @@ export default {
       number: 1
     }
   },
+  computed: {
+    ...mapGetters({
+      cartProducts: 'getCartProducts'
+    })
+  },
   methods: {
     ...mapActions(['updateCart']),
     decrease () {
@@ -45,8 +50,15 @@ export default {
       }
     },
     increase () {
-      if (this.number < this.product.stock) {
-        this.number += 1
+      let cartProduct = this.cartProducts.find(item => item.id === this.product.id)
+      if (cartProduct) {
+        if (this.number + cartProduct.number < this.product.stock) {
+          this.number += 1
+        }
+      } else {
+        if (this.number < this.product.stock) {
+          this.number += 1
+        }
       }
     },
     addToCart () {
