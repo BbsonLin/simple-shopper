@@ -17,7 +17,7 @@
         <td>{{ product.number }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.price * product.number }}</td>
-        <td v-if="step===1"><i class="material-icons">clear</i></td>
+        <td v-if="step===1"><i class="material-icons" @click="removeCartProduct(product)">clear</i></td>
       </tr>
     </tbody>
   </table>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'shop-list',
   computed: {
@@ -34,6 +34,12 @@ export default {
       totalNumber: 'getTotalNumber',
       step: 'getStep'
     })
+  },
+  methods: {
+    ...mapActions(['removeProduct']),
+    removeCartProduct (product) {
+      this.removeProduct(product)
+    }
   }
 }
 </script>
