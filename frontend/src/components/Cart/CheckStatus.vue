@@ -11,7 +11,7 @@
       </tr>
       <tr v-for="check in checkData.checks">
         <td>{{ formatNumber(check.id) }}</td>
-        <td>{{ check.update_time }}</td>
+        <td>{{ check.update_time | moment }}</td>
         <td>{{ check.total }}</td>
         <td>{{ check.status.name }}</td>
         <td>
