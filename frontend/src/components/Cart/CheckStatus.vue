@@ -10,7 +10,7 @@
         <td>操作</td>
       </tr>
       <tr v-for="check in checkData.checks">
-        <td>{{ check.id }}</td>
+        <td>{{ formatNumber(check.id) }}</td>
         <td>{{ check.update_time }}</td>
         <td>{{ check.total }}</td>
         <td>{{ check.status.name }}</td>
@@ -35,6 +35,11 @@ export default {
     ...mapGetters({
       checkData: 'getCheck'
     })
+  },
+  methods: {
+    formatNumber (checkNumber) {
+      return String(checkNumber).padStart(10, '0')
+    }
   }
 }
 </script>
