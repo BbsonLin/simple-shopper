@@ -9,11 +9,11 @@
         <td>訂單狀態</td>
         <td>操作</td>
       </tr>
-      <tr>
+      <tr v-for="check in checkData.checks">
         <td>{{ check.id }}</td>
-        <td>{{ check.datetime }}</td>
-        <td>{{ check.totalAmount }}</td>
-        <td>{{ check.status }}</td>
+        <td>{{ check.update_time }}</td>
+        <td>{{ check.total }}</td>
+        <td>{{ check.status.name }}</td>
         <td>
           <a href="javascript(0)">取消訂單</a>
         </td>
@@ -24,17 +24,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'check-status',
   data () {
     return {
-      check: {
-        id: '00001111',
-        datetime: '2018-02-12 18:05',
-        totalAmount: 1000,
-        status: '未付款'
-      }
     }
+  },
+  computed: {
+    ...mapGetters({
+      checkData: 'getCheck'
+    })
   }
 }
 </script>

@@ -83,8 +83,7 @@ const mutations = {
     state.totalAmount = totalAmount
   },
   UPDATE_CHECK (state, data) {
-    state.check.method = data.method
-    state.check.store = data.store
+    state.check = data
   }
 }
 

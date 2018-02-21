@@ -16,11 +16,11 @@
   <div class="stepthree check-form" v-if="step===3">
     <div class="form-group">
       <h5>取貨地點：</h5>
-      <h6>{{ checkInfo.store.label }}</h6>
+      <h6>{{ checkInfo.checks[0].store.label }}</h6>
     </div>
     <div class="form-group">
       <h5>付款方式：</h5>
-      <h6>{{ checkInfo.method.label }}</h6>
+      <h6>{{ checkInfo.checks[0].method.label }}</h6>
     </div>
   </div>
 </div>
@@ -74,13 +74,11 @@ export default {
     updateCheckInfo () {
       let params = { userId: 1, methodId: this.selectedMethod.id, storeId: this.selectedStore.id, statusId: 0, products: this.cartProducts, total: this.totalAmount }
       requestCart.Create(params).then(data => {
-        console.log(data)
+        this.updateCheck(data)
+        this.addStep()
       }).catch(error => {
         console.log(error)
       })
-      let data = { method: this.selectedMethod, store: this.selectedStore }
-      this.updateCheck(data)
-      this.addStep()
     },
     getStoreList () {
       requestStore.List().then(data => {
