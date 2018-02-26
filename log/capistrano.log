@@ -1,0 +1,347 @@
+# Logfile created on 2018-02-26 14:38:32 +0800 by logger.rb/53141
+  INFO ---------------------------------------------------------------------------
+  INFO START 2018-02-26 14:38:32 +0800 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [c479418d] Running /usr/bin/env mkdir -p /tmp on bandwagon
+ DEBUG [c479418d] Command: /usr/bin/env mkdir -p /tmp
+  INFO [c479418d] Finished in 2.064 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-shop-demo-production-Vincent.sh 0.0%
+  INFO Uploading /tmp/git-ssh-shop-demo-production-Vincent.sh 100.0%
+  INFO [764fc18d] Running /usr/bin/env chmod 700 /tmp/git-ssh-shop-demo-production-Vincent.sh on bandwagon
+ DEBUG [764fc18d] Command: /usr/bin/env chmod 700 /tmp/git-ssh-shop-demo-production-Vincent.sh
+  INFO [764fc18d] Finished in 0.534 seconds with exit status 0 (successful).
+  INFO [093be0ed] Running /usr/bin/env git ls-remote git@github.com:BbsonLin/simple-shopper.git HEAD on bandwagon
+ DEBUG [093be0ed] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git ls-remote git@github.com:BbsonLin/simple-shopper.git HEAD )
+ DEBUG [093be0ed] 	Warning: Permanently added the RSA host key for IP address '192.30.255.112' to the list of known hosts.
+ DEBUG [093be0ed] 	abdd92b077a67ca9ada72f367be13497bf70c157	HEAD
+  INFO [093be0ed] Finished in 1.504 seconds with exit status 0 (successful).
+  INFO [11987d73] Running /usr/bin/env mkdir -p /var/www/shop-demo/shared /var/www/shop-demo/releases on bandwagon
+ DEBUG [11987d73] Command: /usr/bin/env mkdir -p /var/www/shop-demo/shared /var/www/shop-demo/releases
+  INFO [11987d73] Finished in 0.500 seconds with exit status 0 (successful).
+ DEBUG [b4d5f29b] Running [ -f /var/www/shop-demo/current/REVISION ] on bandwagon
+ DEBUG [b4d5f29b] Command: [ -f /var/www/shop-demo/current/REVISION ]
+ DEBUG [b4d5f29b] Finished in 0.528 seconds with exit status 1 (failed).
+ DEBUG [a3dca5da] Running [ -f /var/www/shop-demo/repo/HEAD ] on bandwagon
+ DEBUG [a3dca5da] Command: [ -f /var/www/shop-demo/repo/HEAD ]
+ DEBUG [a3dca5da] Finished in 0.533 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/shop-demo/repo
+ DEBUG [fab8810b] Running if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi on bandwagon
+ DEBUG [fab8810b] Command: if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi
+ DEBUG [fab8810b] Finished in 0.530 seconds with exit status 0 (successful).
+  INFO [f3abd77b] Running /usr/bin/env git remote set-url origin git@github.com:BbsonLin/simple-shopper.git on bandwagon
+ DEBUG [f3abd77b] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git remote set-url origin git@github.com:BbsonLin/simple-shopper.git )
+  INFO [f3abd77b] Finished in 0.545 seconds with exit status 0 (successful).
+  INFO [b9701dfa] Running /usr/bin/env git remote update --prune on bandwagon
+ DEBUG [b9701dfa] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [b9701dfa] 	Fetching origin
+ DEBUG [b9701dfa] 	From github.com:BbsonLin/simple-shopper
+   e0db54a..abdd92b  master     -> master
+  INFO [b9701dfa] Finished in 1.863 seconds with exit status 0 (successful).
+ DEBUG [9e956c81] Running if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi on bandwagon
+ DEBUG [9e956c81] Command: if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi
+ DEBUG [9e956c81] Finished in 0.504 seconds with exit status 0 (successful).
+  INFO [6b1033b2] Running /usr/bin/env mkdir -p /var/www/shop-demo/releases/20180226063839 on bandwagon
+ DEBUG [6b1033b2] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env mkdir -p /var/www/shop-demo/releases/20180226063839 )
+  INFO [6b1033b2] Finished in 0.538 seconds with exit status 0 (successful).
+  INFO [1e83849b] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/shop-demo/releases/20180226063839 on bandwagon
+ DEBUG [1e83849b] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/shop-demo/releases/20180226063839 )
+  INFO [1e83849b] Finished in 0.571 seconds with exit status 0 (successful).
+ DEBUG [ba898b95] Running if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi on bandwagon
+ DEBUG [ba898b95] Command: if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi
+ DEBUG [ba898b95] Finished in 0.528 seconds with exit status 0 (successful).
+ DEBUG [37893310] Running /usr/bin/env git rev-list --max-count=1 master on bandwagon
+ DEBUG [37893310] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [37893310] 	abdd92b077a67ca9ada72f367be13497bf70c157
+ DEBUG [37893310] Finished in 0.539 seconds with exit status 0 (successful).
+ DEBUG [d79d3285] Running if test ! -d /var/www/shop-demo/releases/20180226063839; then echo "Directory does not exist '/var/www/shop-demo/releases/20180226063839'" 1>&2; false; fi on bandwagon
+ DEBUG [d79d3285] Command: if test ! -d /var/www/shop-demo/releases/20180226063839; then echo "Directory does not exist '/var/www/shop-demo/releases/20180226063839'" 1>&2; false; fi
+ DEBUG [d79d3285] Finished in 0.536 seconds with exit status 0 (successful).
+  INFO [72ed4ea3] Running /usr/bin/env echo "abdd92b077a67ca9ada72f367be13497bf70c157" >> REVISION on bandwagon
+ DEBUG [72ed4ea3] Command: cd /var/www/shop-demo/releases/20180226063839 && /usr/bin/env echo "abdd92b077a67ca9ada72f367be13497bf70c157" >> REVISION
+  INFO [72ed4ea3] Finished in 0.537 seconds with exit status 0 (successful).
+  INFO [ecda61ad] Running /usr/bin/env ln -s /var/www/shop-demo/releases/20180226063839 /var/www/shop-demo/releases/current on bandwagon
+ DEBUG [ecda61ad] Command: /usr/bin/env ln -s /var/www/shop-demo/releases/20180226063839 /var/www/shop-demo/releases/current
+  INFO [ecda61ad] Finished in 0.549 seconds with exit status 0 (successful).
+  INFO [b02cec30] Running /usr/bin/env mv /var/www/shop-demo/releases/current /var/www/shop-demo on bandwagon
+ DEBUG [b02cec30] Command: /usr/bin/env mv /var/www/shop-demo/releases/current /var/www/shop-demo
+  INFO [b02cec30] Finished in 0.538 seconds with exit status 0 (successful).
+ DEBUG [539cf557] Running ls -t1 /var/www/shop-demo/releases | sed -n '2p' on bandwagon
+ DEBUG [539cf557] Command: ls -t1 /var/www/shop-demo/releases | sed -n '2p'
+ DEBUG [539cf557] 	20180226063519
+ DEBUG [539cf557] Finished in 0.537 seconds with exit status 0 (successful).
+  INFO [813590e7] Running cd /var/www/shop-demo/releases/20180226063839 && docker build --rm -t rps . on bandwagon
+ DEBUG [813590e7] Command: cd /var/www/shop-demo/releases/20180226063839 && docker build --rm -t rps .
+ DEBUG [813590e7] 	Sending build context to Docker daemon  945.2kB
+ DEBUG [813590e7] 	Step 1/24 : FROM tiangolo/uwsgi-nginx-flask:python3.5
+ DEBUG [813590e7] 	 ---> ef6a0ca16a60
+ DEBUG [813590e7] 	Step 2/24 : WORKDIR /tmp
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> a4df6cfb6013
+ DEBUG [813590e7] 	Step 3/24 : RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> 822b36281ce8
+ DEBUG [813590e7] 	Step 4/24 : RUN apt-get update     && apt-get install -y curl     && apt-get -y autoclean
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> 28bf9ec0ab19
+ DEBUG [813590e7] 	Step 5/24 : ENV NVM_DIR /usr/local/nvm
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> 938a77d810e4
+ DEBUG [813590e7] 	Step 6/24 : ENV NODE_VERSION 6.11.3
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> a4190e2e4842
+ DEBUG [813590e7] 	Step 7/24 : RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> a989e0cf60ce
+ DEBUG [813590e7] 	Step 8/24 : RUN source $NVM_DIR/nvm.sh     && nvm install $NODE_VERSION     && nvm alias default $NODE_VERSION     && nvm use default
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> 9ed0147c45d5
+ DEBUG [813590e7] 	Step 9/24 : ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> 3c0466ff9729
+ DEBUG [813590e7] 	Step 10/24 : ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> ac55bfa99df7
+ DEBUG [813590e7] 	Step 11/24 : RUN node -v
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> 79a094648653
+ DEBUG [813590e7] 	Step 12/24 : RUN npm -v
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> f4a45176cd79
+ DEBUG [813590e7] 	Step 13/24 : RUN apt-get update && apt-get install apt-transport-https &&     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - &&     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list &&     apt-get update && apt-get install --no-install-recommends yarn
+ DEBUG [813590e7] 	 ---> Using cache
+ DEBUG [813590e7] 	 ---> 296f378829fe
+ DEBUG [813590e7] 	Step 14/24 : COPY ./ /app
+ DEBUG [813590e7] 	 ---> a7b0b29ca3f1
+ DEBUG [813590e7] 	Step 15/24 : WORKDIR /app
+ DEBUG [813590e7] 	 ---> cc4d8f90f302
+ DEBUG [813590e7] 	Removing intermediate container 8f536c116bc7
+ DEBUG [813590e7] 	Step 16/24 : RUN pip install -r requirements.txt
+ DEBUG [813590e7] 	 ---> Running in 1b842575dac4
+ DEBUG [813590e7] 	Requirement already satisfied: Flask>=0.12 in /usr/local/lib/python3.5/site-packages (from -r requirements.txt (line 2))
+ DEBUG [813590e7] 	Collecting Flask-Marshmallow==0.7.0 (from -r requirements.txt (line 5))
+ DEBUG [813590e7] 	  Downloading flask_marshmallow-0.7.0-py2.py3-none-any.whl
+ DEBUG [813590e7] 	Collecting marshmallow-sqlalchemy==0.12.0 (from -r requirements.txt (line 6))
+ DEBUG [813590e7] 	  Downloading marshmallow_sqlalchemy-0.12.0-py2.py3-none-any.whl
+ DEBUG [813590e7] 	Collecting Flask-Migrate==2.0.3 (from -r requirements.txt (line 7))
+ DEBUG [813590e7] 	  Downloading Flask-Migrate-2.0.3.tar.gz
+ DEBUG [813590e7] 	Collecting Flask-Script==2.0.5 (from -r requirements.txt (line 8))
+ DEBUG [813590e7] 	  Downloading Flask-Script-2.0.5.tar.gz (42kB)
+ DEBUG [813590e7] 	Collecting Flask-SQLAlchemy==2.1 (from -r requirements.txt (line 9))
+ DEBUG [813590e7] 	  Downloading Flask-SQLAlchemy-2.1.tar.gz (95kB)
+ DEBUG [813590e7] 	Collecting Flask-Restplus==0.10.1 (from -r requirements.txt (line 10))
+ DEBUG [813590e7] 	  Downloading flask_restplus-0.10.1-py2.py3-none-any.whl (1.0MB)
+ DEBUG [813590e7] 	Collecting flake8==3.5.0 (from -r requirements.txt (line 12))
+ DEBUG [813590e7] 	  Downloading flake8-3.5.0-py2.py3-none-any.whl (69kB)
+ DEBUG [813590e7] 	Collecting gunicorn>=19.7.1 (from -r requirements.txt (line 14))
+ DEBUG [813590e7] 	  Downloading gunicorn-19.7.1-py2.py3-none-any.whl (111kB)
+ DEBUG [813590e7] 	Requirement already satisfied: itsdangerous>=0.21 in /usr/local/lib/python3.5/site-packages (from Flask>=0.12->-r requirements.txt (line 2))
+ DEBUG [813590e7] 	Requirement already satisfied: click>=2.0 in /usr/local/lib/python3.5/site-packages (from Flask>=0.12->-r requirements.txt (line 2))
+ DEBUG [813590e7] 	Requirement already satisfied: Jinja2>=2.4 in /usr/local/lib/python3.5/site-packages (from Flask>=0.12->-r requirements.txt (line 2))
+ DEBUG [813590e7] 	Requirement already satisfied: Werkzeug>=0.7 in /usr/local/lib/python3.5/site-packages (from Flask>=0.12->-r requirements.txt (line 2))
+ DEBUG [813590e7] 	Collecting six>=1.9.0 (from Flask-Marshmallow==0.7.0->-r requirements.txt (line 5))
+ DEBUG [813590e7] 	  Downloading six-1.11.0-py2.py3-none-any.whl
+ DEBUG [813590e7] 	Collecting marshmallow>=1.2.0 (from Flask-Marshmallow==0.7.0->-r requirements.txt (line 5))
+ DEBUG [813590e7] 	  Downloading marshmallow-2.15.0-py2.py3-none-any.whl (46kB)
+ DEBUG [813590e7] 	Collecting SQLAlchemy>=0.9.7 (from marshmallow-sqlalchemy==0.12.0->-r requirements.txt (line 6))
+ DEBUG [813590e7] 	  Downloading SQLAlchemy-1.2.4.tar.gz (5.6MB)
+ DEBUG [813590e7] 	Collecting alembic>=0.6 (from Flask-Migrate==2.0.3->-r requirements.txt (line 7))
+ DEBUG [813590e7] 	  Downloading alembic-0.9.8.tar.gz (1.0MB)
+ DEBUG [813590e7] 	Collecting aniso8601>=0.82 (from Flask-Restplus==0.10.1->-r requirements.txt (line 10))
+ DEBUG [813590e7] 	  Downloading aniso8601-2.0.1-py2.py3-none-any.whl
+ DEBUG [813590e7] 	Collecting jsonschema (from Flask-Restplus==0.10.1->-r requirements.txt (line 10))
+ DEBUG [813590e7] 	  Downloading jsonschema-2.6.0-py2.py3-none-any.whl
+ DEBUG [813590e7] 	Collecting pytz (from Flask-Restplus==0.10.1->-r requirements.txt (line 10))
+ DEBUG [813590e7] 	  Downloading pytz-2018.3-py2.py3-none-any.whl (509kB)
+ DEBUG [813590e7] 	Collecting pycodestyle<2.4.0,>=2.0.0 (from flake8==3.5.0->-r requirements.txt (line 12))
+ DEBUG [813590e7] 	  Downloading pycodestyle-2.3.1-py2.py3-none-any.whl (45kB)
+ DEBUG [813590e7] 	Collecting mccabe<0.7.0,>=0.6.0 (from flake8==3.5.0->-r requirements.txt (line 12))
+ DEBUG [813590e7] 	  Downloading mccabe-0.6.1-py2.py3-none-any.whl
+ DEBUG [813590e7] 	Collecting pyflakes<1.7.0,>=1.5.0 (from flake8==3.5.0->-r requirements.txt (line 12))
+ DEBUG [813590e7] 	  Downloading pyflakes-1.6.0-py2.py3-none-any.whl (227kB)
+ DEBUG [813590e7] 	Requirement already satisfied: MarkupSafe>=0.23 in /usr/local/lib/python3.5/site-packages (from Jinja2>=2.4->Flask>=0.12->-r requirements.txt (line 2))
+ DEBUG [813590e7] 	Collecting Mako (from alembic>=0.6->Flask-Migrate==2.0.3->-r requirements.txt (line 7))
+ DEBUG [813590e7] 	  Downloading Mako-1.0.7.tar.gz (564kB)
+ DEBUG [813590e7] 	Collecting python-editor>=0.3 (from alembic>=0.6->Flask-Migrate==2.0.3->-r requirements.txt (line 7))
+ DEBUG [813590e7] 	  Downloading python-editor-1.0.3.tar.gz
+ DEBUG [813590e7] 	Collecting python-dateutil (from alembic>=0.6->Flask-Migrate==2.0.3->-r requirements.txt (line 7))
+ DEBUG [813590e7] 	  Downloading python_dateutil-2.6.1-py2.py3-none-any.whl (194kB)
+ DEBUG [813590e7] 	Building wheels for collected packages: Flask-Migrate, Flask-Script, Flask-SQLAlchemy, SQLAlchemy, alembic, Mako, python-editor
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for Flask-Migrate: started
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for Flask-Migrate: finished with status 'done'
+ DEBUG [813590e7] 	  Stored in directory: /root/.cache/pip/wheels/4f/1a/cd/241202c77554d1500b47f169a59432c33834f941e90769bf0e
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for Flask-Script: started
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for Flask-Script: finished with status 'done'
+ DEBUG [813590e7] 	  Stored in directory: /root/.cache/pip/wheels/e2/ea/d8/8d114e46cef819f7d9879504a7f9cb2a88a479af2858223d9f
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for Flask-SQLAlchemy: started
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for Flask-SQLAlchemy: finished with status 'done'
+ DEBUG [813590e7] 	  Stored in directory: /root/.cache/pip/wheels/cf/9f/1b/390c152e645c6e300fda9ed9c678c6e22717a3020fd02acb4d
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for SQLAlchemy: started
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for SQLAlchemy: finished with status 'done'
+ DEBUG [813590e7] 	  Stored in directory: /root/.cache/pip/wheels/f5/11/58/ee8f367bfb3266eaf111768396f3363a2f9536ca934b9e8f63
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for alembic: started
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for alembic: finished with status 'done'
+ DEBUG [813590e7] 	  Stored in directory: /root/.cache/pip/wheels/29/f4/c3/96037a3f2dcc2b8b59eff64746ea71bb5957f189c5a0877364
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for Mako: started
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for Mako: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/33/bf/8f/036f36c35e0e3c63a4685e306bce6b00b6349fec5b0947586e
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for python-editor: started
+ DEBUG [813590e7] 	  Running setup.py bdist_wheel for python-editor: finished with status 'done'
+ DEBUG [813590e7] 	  Stored in directory: /root/.cache/pip/wheels/84/d6/b8/082dc3b5cd7763f17f5500a193b6b248102217cbaa3f0a24ca
+ DEBUG [813590e7] 	Successfully built Flask-Migrate Flask-Script Flask-SQLAlchemy SQLAlchemy alembic Mako python-editor
+ DEBUG [813590e7] 	Installing collected packages: six, marshmallow, Flask-Marshmallow, SQLAlchemy, marshmallow-sqlalchemy, Flask-SQLAlchemy, Mako, python-editor, python-dateutil, alembic, Flask-Script, Flask-Migrate, aniso8601, jsonschema, pytz, Flask-Restplus, pycodestyle, mccabe, pyflakes, flake8, gunicorn
+ DEBUG [813590e7] 	Successfully installed Flask-Marshmallow-0.7.0 Flask-Migrate-2.0.3 Flask-Restplus-0.10.1 Flask-SQLAlchemy-2.1 Flask-Script-2.0.5 Mako-1.0.7 SQLAlchemy-1.2.4 alembic-0.9.8 aniso8601-2.0.1 flake8-3.5.0 gunicorn-19.7.1 jsonschema-2.6.0 marshmallow-2.15.0 marshmallow-sqlalchemy-0.12.0 mccabe-0.6.1 pycodestyle-2.3.1 pyflakes-1.6.0 python-dateutil-2.6.1 python-editor-1.0.3 pytz-2018.3 six-1.11.0
+ DEBUG [813590e7] 	 ---> 03602ab3f515
+ DEBUG [813590e7] 	Removing intermediate container 1b842575dac4
+ DEBUG [813590e7] 	Step 17/24 : RUN rm -rf /app/*
+ DEBUG [813590e7] 	 ---> Running in d3704a3bd7bc
+ DEBUG [813590e7] 	 ---> b66448d42029
+ DEBUG [813590e7] 	Removing intermediate container d3704a3bd7bc
+ DEBUG [813590e7] 	Step 18/24 : ENV NGINX_MAX_UPLOAD 0
+ DEBUG [813590e7] 	 ---> Running in 899d71d8bfa3
+ DEBUG [813590e7] 	 ---> f8abffaa5aad
+ DEBUG [813590e7] 	Removing intermediate container 899d71d8bfa3
+ DEBUG [813590e7] 	Step 19/24 : ENV UWSGI_INI /app/uwsgi.ini
+ DEBUG [813590e7] 	 ---> Running in e082a9c9e39f
+ DEBUG [813590e7] 	 ---> dd5c53c404e8
+ DEBUG [813590e7] 	Removing intermediate container e082a9c9e39f
+ DEBUG [813590e7] 	Step 20/24 : ENV STATIC_INDEX 0
+ DEBUG [813590e7] 	 ---> Running in f2ca942ea56c
+ DEBUG [813590e7] 	 ---> 16ac4e47e600
+ DEBUG [813590e7] 	Removing intermediate container f2ca942ea56c
+ DEBUG [813590e7] 	Step 21/24 : COPY entrypoint.sh /entrypoint.sh
+ DEBUG [813590e7] 	COPY failed: stat /var/lib/docker/tmp/docker-builder752379325/entrypoint.sh: no such file or directory
+  INFO ---------------------------------------------------------------------------
+  INFO START 2018-02-26 14:39:39 +0800 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [13d55422] Running /usr/bin/env mkdir -p /tmp on bandwagon
+ DEBUG [13d55422] Command: /usr/bin/env mkdir -p /tmp
+  INFO [13d55422] Finished in 2.166 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-shop-demo-production-Vincent.sh 0.0%
+  INFO Uploading /tmp/git-ssh-shop-demo-production-Vincent.sh 100.0%
+  INFO [fa1e0646] Running /usr/bin/env chmod 700 /tmp/git-ssh-shop-demo-production-Vincent.sh on bandwagon
+ DEBUG [fa1e0646] Command: /usr/bin/env chmod 700 /tmp/git-ssh-shop-demo-production-Vincent.sh
+  INFO [fa1e0646] Finished in 0.537 seconds with exit status 0 (successful).
+  INFO [f529d4d6] Running /usr/bin/env git ls-remote git@github.com:BbsonLin/simple-shopper.git HEAD on bandwagon
+ DEBUG [f529d4d6] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git ls-remote git@github.com:BbsonLin/simple-shopper.git HEAD )
+ DEBUG [f529d4d6] 	abdd92b077a67ca9ada72f367be13497bf70c157	HEAD
+  INFO [f529d4d6] Finished in 1.418 seconds with exit status 0 (successful).
+  INFO [a3ce6f14] Running /usr/bin/env mkdir -p /var/www/shop-demo/shared /var/www/shop-demo/releases on bandwagon
+ DEBUG [a3ce6f14] Command: /usr/bin/env mkdir -p /var/www/shop-demo/shared /var/www/shop-demo/releases
+  INFO [a3ce6f14] Finished in 0.499 seconds with exit status 0 (successful).
+ DEBUG [6202d9ad] Running [ -f /var/www/shop-demo/current/REVISION ] on bandwagon
+ DEBUG [6202d9ad] Command: [ -f /var/www/shop-demo/current/REVISION ]
+ DEBUG [6202d9ad] Finished in 0.532 seconds with exit status 0 (successful).
+ DEBUG [e3033a6d] Running /usr/bin/env cat /var/www/shop-demo/current/REVISION 2>/dev/null on bandwagon
+ DEBUG [e3033a6d] Command: /usr/bin/env cat /var/www/shop-demo/current/REVISION 2>/dev/null
+ DEBUG [e3033a6d] 	abdd92b077a67ca9ada72f367be13497bf70c157
+ DEBUG [e3033a6d] Finished in 0.538 seconds with exit status 0 (successful).
+ DEBUG [af5b04a6] Running [ -f /var/www/shop-demo/repo/HEAD ] on bandwagon
+ DEBUG [af5b04a6] Command: [ -f /var/www/shop-demo/repo/HEAD ]
+ DEBUG [af5b04a6] Finished in 0.541 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/shop-demo/repo
+ DEBUG [e9d5eaf0] Running if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi on bandwagon
+ DEBUG [e9d5eaf0] Command: if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi
+ DEBUG [e9d5eaf0] Finished in 0.539 seconds with exit status 0 (successful).
+  INFO [310c862c] Running /usr/bin/env git remote set-url origin git@github.com:BbsonLin/simple-shopper.git on bandwagon
+ DEBUG [310c862c] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git remote set-url origin git@github.com:BbsonLin/simple-shopper.git )
+  INFO [310c862c] Finished in 0.541 seconds with exit status 0 (successful).
+  INFO [79052cce] Running /usr/bin/env git remote update --prune on bandwagon
+ DEBUG [79052cce] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [79052cce] 	Fetching origin
+  INFO [79052cce] Finished in 1.636 seconds with exit status 0 (successful).
+ DEBUG [f3e8ee3c] Running if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi on bandwagon
+ DEBUG [f3e8ee3c] Command: if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi
+ DEBUG [f3e8ee3c] Finished in 0.502 seconds with exit status 0 (successful).
+  INFO [ce91c724] Running /usr/bin/env mkdir -p /var/www/shop-demo/releases/20180226063952 on bandwagon
+ DEBUG [ce91c724] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env mkdir -p /var/www/shop-demo/releases/20180226063952 )
+  INFO [ce91c724] Finished in 0.536 seconds with exit status 0 (successful).
+  INFO [5d99cd58] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/shop-demo/releases/20180226063952 on bandwagon
+ DEBUG [5d99cd58] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/shop-demo/releases/20180226063952 )
+  INFO [5d99cd58] Finished in 0.565 seconds with exit status 0 (successful).
+ DEBUG [bf518a41] Running if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi on bandwagon
+ DEBUG [bf518a41] Command: if test ! -d /var/www/shop-demo/repo; then echo "Directory does not exist '/var/www/shop-demo/repo'" 1>&2; false; fi
+ DEBUG [bf518a41] Finished in 0.536 seconds with exit status 0 (successful).
+ DEBUG [b4040ba4] Running /usr/bin/env git rev-list --max-count=1 master on bandwagon
+ DEBUG [b4040ba4] Command: cd /var/www/shop-demo/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-shop-demo-production-Vincent.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [b4040ba4] 	abdd92b077a67ca9ada72f367be13497bf70c157
+ DEBUG [b4040ba4] Finished in 0.541 seconds with exit status 0 (successful).
+ DEBUG [9edac0de] Running if test ! -d /var/www/shop-demo/releases/20180226063952; then echo "Directory does not exist '/var/www/shop-demo/releases/20180226063952'" 1>&2; false; fi on bandwagon
+ DEBUG [9edac0de] Command: if test ! -d /var/www/shop-demo/releases/20180226063952; then echo "Directory does not exist '/var/www/shop-demo/releases/20180226063952'" 1>&2; false; fi
+ DEBUG [9edac0de] Finished in 0.537 seconds with exit status 0 (successful).
+  INFO [78da3df1] Running /usr/bin/env echo "abdd92b077a67ca9ada72f367be13497bf70c157" >> REVISION on bandwagon
+ DEBUG [78da3df1] Command: cd /var/www/shop-demo/releases/20180226063952 && /usr/bin/env echo "abdd92b077a67ca9ada72f367be13497bf70c157" >> REVISION
+  INFO [78da3df1] Finished in 0.561 seconds with exit status 0 (successful).
+  INFO [f2e17303] Running /usr/bin/env ln -s /var/www/shop-demo/releases/20180226063952 /var/www/shop-demo/releases/current on bandwagon
+ DEBUG [f2e17303] Command: /usr/bin/env ln -s /var/www/shop-demo/releases/20180226063952 /var/www/shop-demo/releases/current
+  INFO [f2e17303] Finished in 0.541 seconds with exit status 0 (successful).
+  INFO [d87fafb0] Running /usr/bin/env mv /var/www/shop-demo/releases/current /var/www/shop-demo on bandwagon
+ DEBUG [d87fafb0] Command: /usr/bin/env mv /var/www/shop-demo/releases/current /var/www/shop-demo
+  INFO [d87fafb0] Finished in 0.555 seconds with exit status 0 (successful).
+ DEBUG [c958db67] Running ls -t1 /var/www/shop-demo/releases | sed -n '2p' on bandwagon
+ DEBUG [c958db67] Command: ls -t1 /var/www/shop-demo/releases | sed -n '2p'
+ DEBUG [c958db67] 	20180226063839
+ DEBUG [c958db67] Finished in 0.542 seconds with exit status 0 (successful).
+  INFO [0185add8] Running cd /var/www/shop-demo/releases/20180226063952 && docker build --rm -t rps . on bandwagon
+ DEBUG [0185add8] Command: cd /var/www/shop-demo/releases/20180226063952 && docker build --rm -t rps .
+ DEBUG [0185add8] 	Sending build context to Docker daemon  945.2kB
+ DEBUG [0185add8] 	Step 1/24 : FROM tiangolo/uwsgi-nginx-flask:python3.5
+ DEBUG [0185add8] 	 ---> ef6a0ca16a60
+ DEBUG [0185add8] 	Step 2/24 : WORKDIR /tmp
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> a4df6cfb6013
+ DEBUG [0185add8] 	Step 3/24 : RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 822b36281ce8
+ DEBUG [0185add8] 	Step 4/24 : RUN apt-get update     && apt-get install -y curl     && apt-get -y autoclean
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 28bf9ec0ab19
+ DEBUG [0185add8] 	Step 5/24 : ENV NVM_DIR /usr/local/nvm
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 938a77d810e4
+ DEBUG [0185add8] 	Step 6/24 : ENV NODE_VERSION 6.11.3
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> a4190e2e4842
+ DEBUG [0185add8] 	Step 7/24 : RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> a989e0cf60ce
+ DEBUG [0185add8] 	Step 8/24 : RUN source $NVM_DIR/nvm.sh     && nvm install $NODE_VERSION     && nvm alias default $NODE_VERSION     && nvm use default
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 9ed0147c45d5
+ DEBUG [0185add8] 	Step 9/24 : ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 3c0466ff9729
+ DEBUG [0185add8] 	Step 10/24 : ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> ac55bfa99df7
+ DEBUG [0185add8] 	Step 11/24 : RUN node -v
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 79a094648653
+ DEBUG [0185add8] 	Step 12/24 : RUN npm -v
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> f4a45176cd79
+ DEBUG [0185add8] 	Step 13/24 : RUN apt-get update && apt-get install apt-transport-https &&     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - &&     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list &&     apt-get update && apt-get install --no-install-recommends yarn
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 296f378829fe
+ DEBUG [0185add8] 	Step 14/24 : COPY ./ /app
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> a7b0b29ca3f1
+ DEBUG [0185add8] 	Step 15/24 : WORKDIR /app
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> cc4d8f90f302
+ DEBUG [0185add8] 	Step 16/24 : RUN pip install -r requirements.txt
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 03602ab3f515
+ DEBUG [0185add8] 	Step 17/24 : RUN rm -rf /app/*
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> b66448d42029
+ DEBUG [0185add8] 	Step 18/24 : ENV NGINX_MAX_UPLOAD 0
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> f8abffaa5aad
+ DEBUG [0185add8] 	Step 19/24 : ENV UWSGI_INI /app/uwsgi.ini
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> dd5c53c404e8
+ DEBUG [0185add8] 	Step 20/24 : ENV STATIC_INDEX 0
+ DEBUG [0185add8] 	 ---> Using cache
+ DEBUG [0185add8] 	 ---> 16ac4e47e600
+ DEBUG [0185add8] 	Step 21/24 : COPY entrypoint.sh /entrypoint.sh
+ DEBUG [0185add8] 	COPY failed: stat /var/lib/docker/tmp/docker-builder146344978/entrypoint.sh: no such file or directory
