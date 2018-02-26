@@ -1,5 +1,6 @@
 public/*
 __pycache__
+config/*
 
 # SQLite database
 *.sqlite
