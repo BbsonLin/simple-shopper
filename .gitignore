@@ -1,6 +1,7 @@
 public/*
 __pycache__
 config/*
+log/*
 
 # SQLite database
 *.sqlite
